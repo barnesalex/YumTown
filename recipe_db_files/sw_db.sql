@@ -18,7 +18,7 @@ CREATE TABLE LOGIN(
 	userid varchar(255),
 	username varchar(255),
 	password varchar(255),
-    FOREIGN KEY(userid) REFERENCES PROFILE(userid),
+    	FOREIGN KEY(userid) REFERENCES PROFILE(userid),
 	PRIMARY KEY(userid, username)
 );
 
