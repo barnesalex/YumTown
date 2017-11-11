@@ -1,4 +1,4 @@
---Created by Andrew Krall
+/* Created by Andrew Krall 8 */
 DROP TABLE IF EXISTS LOGIN;
 DROP TABLE IF EXISTS SAVED_RECIPES;
 DROP TABLE IF EXISTS RECIPE_INGREDIENTS;
@@ -19,7 +19,10 @@ CREATE TABLE LOGIN(
 	userid varchar(255),
 	username varchar(255),
 	password varchar(255),
-    	FOREIGN KEY(userid) REFERENCES PROFILE(userid),
+    CONSTRAINT login_delete
+        FOREIGN KEY(userid)
+        REFERENCES PROFILE(userid)
+        ON DELETE CASCADE, -- Will delete the login row associated with the user's id if a user is deleted.
 	PRIMARY KEY(userid, username)
 );
 
@@ -35,30 +38,9 @@ CREATE TABLE LOGIN(
 CREATE TABLE SAVED_RECIPES( 
 	userid varchar(255),
 	recipe_id varchar(255),
-    dishname varchar(255),
-	category varchar(255),
-	recipe_name varchar(255),
-	description varchar(255),
-	price decimal(18,4),
     PRIMARY KEY(userid, recipe_id),
-    CONSTRAINT deleted_key
+    CONSTRAINT saved_recipe_delete
         FOREIGN KEY(userid) 
         REFERENCES PROFILE(userid)
-        ON DELETE CASCADE -- I have it cascade deletion on row deletion here because if a record in the saved_recipes table is deleted, then the corresponding recipe_ingredients entry should also be deleted, since each saved recipe will create a new recipe_ingredients entry.
-);
-
-CREATE TABLE INGREDIENTS(
-	ingredient_name varchar(255),
-	store_location varchar(255),
-	store_id varchar(255),
-	price decimal(18,4),
-    PRIMARY KEY(ingredient_name)
-);
-
-CREATE TABLE RECIPE_INGREDIENTS(
-	recipe_id varchar(255),
-	ingredient_name varchar(255),
-	quantity varchar(255),
-    FOREIGN KEY(ingredient_name) REFERENCES INGREDIENTS(ingredient_name),
-    PRIMARY KEY(recipe_id, ingredient_name)
+        ON DELETE CASCADE -- Will delete the saved recipes associated with the user's id if a user is deleted.
 );
