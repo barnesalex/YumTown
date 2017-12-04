@@ -34,13 +34,12 @@
     $gender = htmlspecialchars($_POST['gender']);
     $profession = htmlspecialchars($_POST['profession']);
     $affiliation = htmlspecialchars($_POST['affiliation']);
-    $password = htmlspecialchars($_POST['password']);
+    $password = htmlspecialchars($_POST['pass']);
 
     //USED ONLY FOR TESTING PURPOSES!!!!!!!!! Hardcoding the username session variable
     $_SESSION['user'] = "AAAA";
 
     if(!empty($name)) {
-        echo "Got here!";
         $query = "UPDATE PROFILE SET name=? WHERE username=?";
         $stmt = $mysqli->stmt_init();
         //Prepare the UPDATE statement such that the database is updated to the new full name.
@@ -50,19 +49,17 @@
             exit();
         } 
         $stmt->bind_param("ss", $name, $_SESSION['user']);
-        echo $name . "<br>";
         $stmt->execute();
-        echo $stmt->affected_rows;
         if($stmt->affected_rows > 0) {
-            echo "Username successfully updated!";
+            echo "Username successfully updated!" . "<br>";
         }
         else {
             //This could either be because the user is trying to update the field with the same info, or is inputting invalid characters.
-            echo "Username not updated.";
+            echo "Username not updated.". "<br>";
         }
+        $stmt->close();
     }
     if(!empty($dob)) {
-        echo "Got here!";
         $query = "UPDATE PROFILE SET dob=? WHERE username=?";
         $stmt = $mysqli->stmt_init();
         //Prepare the UPDATE statement such that the database is updated to the new date of birth.
@@ -72,17 +69,16 @@
             exit();
         } 
         $stmt->bind_param("ss", $dob, $_SESSION['user']);
-        echo $dob . "<br>";
         $stmt->execute();
         if($stmt->affected_rows > 0) {
-            echo "Date of birth successfully updated!";
+            echo "Date of birth successfully updated!" . "<br>";
         }
         else {
-            echo "Date of birth not updated.";
+            echo "Date of birth not updated." . "<br>";
         }
+        $stmt->close();
     }
     if(!empty($gender)) {
-        echo "Got here!";
         $query = "UPDATE PROFILE SET gender=? WHERE username=?";
         $stmt = $mysqli->stmt_init();
         //Prepare the UPDATE statement such that the database is updated to the new gender.
@@ -92,17 +88,16 @@
             exit();
         } 
         $stmt->bind_param("ss", $gender, $_SESSION['user']);
-        echo $gender . "<br>";
         $stmt->execute();
         if($stmt->affected_rows > 0) {
-            echo "Gender successfully updated!";
+            echo "Gender successfully updated!" . "<br>";
         }
         else {
-            echo "Gender not updated.";
+            echo "Gender not updated." . "<br>";
         }
+        $stmt->close();
     }
     if(!empty($profession)) {
-        echo "Got here!";
         $query = "UPDATE PROFILE SET profession=? WHERE username=?";
         $stmt = $mysqli->stmt_init();
         //Prepare the UPDATE statement such that the database is updated to the new profession.
@@ -112,17 +107,16 @@
             exit();
         } 
         $stmt->bind_param("ss", $profession, $_SESSION['user']);
-        echo $profession . "<br>";
         $stmt->execute();
         if($stmt->affected_rows > 0) {
-            echo "Profession successfully updated!";
+            echo "Profession successfully updated!" . "<br>";
         }
         else {
-            echo "Profession not updated!";
+            echo "Profession not updated!" . "<br>";
         }
+        $stmt->close();
     }
     if(!empty($affiliation)) {
-        echo "Got here!";
         $query = "UPDATE PROFILE SET affiliation=? WHERE username=?";
         $stmt = $mysqli->stmt_init();
         //Prepare the UPDATE statement such that the database is updated to the new affiliation.
@@ -132,18 +126,17 @@
             exit();
         } 
         $stmt->bind_param("ss", $affiliation, $_SESSION['user']);
-        echo $affiliation . "<br>";
         $stmt->execute();
         if($stmt->affected_rows > 0) {
-            echo "Affiliation successfully updated!";
+            echo "Affiliation successfully updated!" . "<br>";
         }
         else {
-            echo "Affiliation not updated.";
+            echo "Affiliation not updated." . "<br>";
         }
+        $stmt->close();
     }
     //Updating the password will need to be formatted a bit differently so that we can ensure it is hashed.
     if(!empty($password)) {
-        echo "Got here!";
         $query = "UPDATE LOGIN SET password=? WHERE username=?";
         $stmt = $mysqli->stmt_init();
         //Prepare the UPDATE statement such that the database is updated to the new password.
@@ -151,16 +144,18 @@
         {
             echo "Statement was not properly prepared.";
             exit();
-        } 
-        $stmt->bind_param("ss", $name, $_SESSION['user']);
-        echo $password . "<br>";
+        }
+        //So I should probably have the user enter their old password before they change it, but I can do that in the next sprint if needed.
+        $hash = password_hash($password, PASSWORD_DEFAULT);
+        $stmt->bind_param("ss", $hash, $_SESSION['user']);
         $stmt->execute();
         if($stmt->affected_rows > 0) {
-            echo "Change successful!";
+            echo "Password successfully changed!" . "<br>";
         }
         else {
-            echo "Change unsuccessful!";
+            echo "Password not changed." . "<br>";
         }
+        $stmt->close();
     }
     
 ?>
