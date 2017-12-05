@@ -2,7 +2,7 @@
 <html lang="en">
     <head>
       <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
-      <script>
+      <!-- <script>
       function priceBreakdown(){
         var url = "https://spoonacular-recipe-food-nutrition-v1.p.mashape.com/recipes/visualizePriceEstimator";
         $.ajax({
@@ -25,18 +25,59 @@
                // console.log(data);
                //  document.getElementById('demo').innerHTML= data;
 
-                document.getElementById('spoonacular-ingredients').innerText= '1 cup milk';
+              $('#spoonacular-ingredients').append('1 cup milk');
 
         });
       }
 
-      </script>
+      </script> -->
     </head>
 
 <body onload="priceBreakdown()">
-  <pre id="spoonacular-ingredients" style="display:none">
 
+<!-- <script>
+function priceBreakdown(){
+
+
+  // $('#spoonacular-ingredients').append("1 cup milk");
+  var url = "https://spoonacular-recipe-food-nutrition-v1.p.mashape.com/recipes/visualizePriceEstimator";
+
+  $.ajax({
+          type: "POST",
+          dataType:'text',
+          cache: false,
+          url: url,
+          params:{
+              // 'ingredientList':'3 oz flour',
+              'mode': 2,
+              // 'servings':1,
+              'defaultCSS':false,
+
+          },
+          headers:{
+            "X-Mashape-Key": "KPcwDkFQicmshdW99jxJxJaXyBZ1p1VgGiGjsnKS43zN1TMUJm"
+          },
+          // success: function(data){
+         //  alert('success');
+         // console.log(data);
+
+
+
+
+  });
+
+}
+
+</script> -->
+<pre id='spoonacular-ingredients' style="display:none">
 </pre>
+<script>
+
+var obj = ["1 cup chocolate chips","2 eggs","1.5 cup flour","1 cup sugar","1/2 cup butter","1 tsp baking powder"]
+for(i = 0; i < obj.length; i++){
+        $('#spoonacular-ingredients').append(obj[i]+"\n");}
+// document.getElementById('spoonacular-ingredients').innerText= '1 cup milk' ;
+</script>
 <div id="spoonacular-price-estimator"></div>
 <script type="text/javascript">
  var spoonacularServings = 1;
