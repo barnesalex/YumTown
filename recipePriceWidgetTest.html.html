@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
+        <script type="text/javascript" src="https://code.jquery.com/jquery-1.9.1.min.js"></script>
+        <script type="text/javascript" src="https://spoonacular.com/cdn/spoonacular-1.6.min.js"></script>
+    </head>
+
+<body onload="priceBreakdown()">
+    <pre id='spoonacular-ingredients' style="display:none"></pre>
+    <script>
+        var obj = ["1 cup chocolate chips","2 eggs","1.5 cup flour","1 cup sugar","1/2 cup butter","1 tsp baking powder"]
+        for(i = 0; i < obj.length; i++){
+            $('#spoonacular-ingredients').append(obj[i]+"\n");
+        }
+            // document.getElementById('spoonacular-ingredients').innerText= '1 cup milk' ;
+        </script>
+    <div id="spoonacular-price-estimator"></div>
+    <script type="text/javascript">
+        var spoonacularServings = 1;
+        var spoonacularPriceView = 2;
+    </script>
+
+    <!-- <div id='demo'></div> -->
+    <div id='spoonacularPriceView'></div>
+</body>
+</html>
