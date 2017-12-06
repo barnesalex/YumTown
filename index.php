@@ -83,10 +83,10 @@
                     
                     {{#loginPage}}
                         <form action="" method=POST>
-                            UserName:<br>
+                            Username:<br>
                             <input type="text" name="name" required="required"><br>
                             Password:<br>
-                            <input type="text" name="pass" required="required">
+                            <input type="password" name="pass" required="required">
                             <br><br>
                             <input type="submit" name="submit" value="login">
                         </form>
@@ -315,19 +315,24 @@
                 }
             //Check if the password the user inputs in the login.php page is equal to the password in the database by using the password_verify() function to unhash the database password and compare it to the password input by the user. I also learned you can just use $r instead of $dbPasswordHash since there's only one thing in the array, which is pretty cool, but I made $r be assigned to $dbPasswordHash so that it makes more sense if anyone actually reads this code.
             if(password_verify($password, $dbPasswordHash)) {
-                print "These passwords match!";
+                //print "These passwords match!";
                 $password_correct = 1;
             }
             #If the username exists, this means the user can be logged in. Verify if the password is correct.
             if($password_correct == 0){
-                echo "<hr>Username or password invalid, please try again.<br>";
+                $message = "Username or password invalid, please try again.";
+                echo "<script type='text/javascript'>alert('$message');</script>";
+                exit();
             } else {
-                echo "<hr>User sucessfully logged in!";
+                //echo "<hr>User sucessfully logged in!";
                 #Assign name to session variable.
                 $_SESSION['user'] = $username;
                 #Assign password to session variable.
                 $_SESSION['pass'] = $password;
                 //Redirect to the profile.php page after being logged in.
+                echo '<script type="text/javascript">',
+                'logInPage();',
+                '</script>';
             }
             $stmt->close();
             $mysqli->close();
