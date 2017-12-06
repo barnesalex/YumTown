@@ -338,10 +338,10 @@
         ?>
         <!--Create Profile Page-->
         <?php
-        if(isset($_POST['submit']) && $_POST['register'])
+        if(isset($_POST['submit']) && $_POST['submit'] == 'register')
         {
-            include "./secure/database.php";
-            include "./profileFunctions.php";
+            include "./recipe_db_files/secure/database.php";
+            include "./recipe_db_files/profileFunctions.php";
             //Initiate a mysqli connection with the database
             $mysqli = new mysqli($HOST, $USERNAME, $PASSWORD, $DBNAME);
 
