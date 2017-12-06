@@ -19,32 +19,12 @@
             src="https://code.jquery.com/jquery-3.2.1.min.js"
             integrity="sha256-hwg4gsxgFZhOsEEamdOYGBf13FyQuiTwlAQgxVSNgt4="
             crossorigin="anonymous"></script>
-        
+        <link rel="stylesheet" type="text/css" href="Main.css">
         <!-- Bootstrap core CSS -->
         <link href="startbootstrap-simple-sidebar-gh-pages/startbootstrap-simple-sidebar-gh-pages/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
-
         <!-- Bootstrap core JavaScript -->
         <script src="startbootstrap-simple-sidebar-gh-pages/startbootstrap-simple-sidebar-gh-pages/vendor/jquery/jquery.min.js"></script>
         <script src="startbootstrap-simple-sidebar-gh-pages/startbootstrap-simple-sidebar-gh-pages/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
-        
-        <link rel="stylesheet" type="text/css" href="Main.css">
-        
-        <script src="js/mustache.js"></script>
-        <script>
-//            function logInToolbar()
-//            {
-//                var Container = document.getElementById("container");
-//                Container.innerHTML =
-//                    '<ul class="nav nav-pills nav-stacked"><button id="loggedInNav1" type="button" class="btn btn-default">Search Dishes</button><button id="loggedInNav2" type="button" class="btn btn-default">View Saved Dishes</button><button id="loggedInNav3" type="button" class="btn btn-default">Create New Recipe</button><button id="loggedInNav4" type="button" class="btn btn-default">Edit Profile</button><button id="loggedInNav5" type="button" class="btn btn-default" onclick="logOut()">Log Out</button></ul>'
-//            }
-            
-//            function logOutButton()
-//            {
-//                var Container = document.getElementById("container");
-//                Container.innerHTML =
-//                    '<ul class="nav nav-pills nav-stacked"><button id="generalNav1" type="button" class="btn btn-default" onclick="homePageDisplay()">Home</button><button id="generalNav2" type="button" class="btn btn-default" onclick="logInToolbarPage()">Log In</button><button id="generalNav3" type="button" class="btn btn-default" onclick="createAccountPage()">Create Account</button></ul>'
-//            }
-        </script>
         <script src="js/mustache.js"></script>
         <script src="js/functions.js"></script>
     </head>
@@ -55,13 +35,7 @@
                 <script>
                     logOutButton();
                 </script>
-<!--
-                <ul class="nav nav-pills nav-stacked">
-                    <button id="generalNav1" type="button" class="btn btn-default"><a data-toggle="tab" href="#home">Home</a></button>
-                    <button id="generalNav2" type="button" class="btn btn-default" onclick="logInToolbar"><a data-toggle="tab" href="#LogIn">Log In</a></button>
-                    <button id="generalNav3" type="button" class="btn btn-default"><a data-toggle="tab" href="#CreateAccount">Create Account</a></button>
-                </ul>
--->
+
             </div>
         </div>
         
@@ -137,149 +111,7 @@
         </script>
         
         <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
-        
-        <script>
-//        function homePageDisplay()
-//        {
-////            logOut();
-//            var state =
-//            {
-//                main: true,
-//                login: false,
-//                details: false,        
-//            }
-//            var template = document.getElementById("template");
-//            var hash = state;
-//        
-//            var output = Mustache.render(template.innerHTML, hash);
-//        
-//            var display = document.getElementById("display");
-//            display.innerHTML = output;
-//        }
-            
-//        function logInPage()
-//        {
-//            var logIn =
-//            {
-//                loginPage: true,
-//            }
-//            var template = document.getElementById("template");
-//            var hash = logIn;
-//        
-//            var output = Mustache.render(template.innerHTML, hash);
-//        
-//            var display = document.getElementById("display");
-//            display.innerHTML = output;
-//        }
-            
-//        function createAccountPage()
-//        {
-//            var account =
-//            {
-//                createAccount: true,
-//            }
-//            var template = document.getElementById("template");
-//            var hash = account;
-//        
-//            var output = Mustache.render(template.innerHTML, hash);
-//        
-//            var display = document.getElementById("display");
-//            display.innerHTML = output;
-//        }
-            
-//        function login) 
-//        {
-//            if(login == true)
-//            {
-//                logInToolbar();     
-//            }
-//            else
-//            {
-//                logOutButton();    
-//            }
-//        }
-            
-//        function displayRecipeDetails(title, length, imageURL, ingredients, steps) 
-//        {
-//            var details = 
-//            {
-//                main: true,
-//                login: false,
-//                details: false,
-//                name: title,
-//                length: length,
-//                image: imageURL,
-//                ingredients:
-//                [   
-//                    
-//                ],
-//                steps: 
-//                [
-//                    
-//                ],
-//			 };
-//             details.steps = steps;
-//             details.ingredients = ingredients;  
-//             var template = document.getElementById("template");
-//             var hash = details;
-//        
-//             var output = Mustache.render(template.innerHTML, hash);
-//        
-//             var display = document.getElementById("display");
-//             display.innerHTML = output;
-//        }
-//        function getRecipe() 
-//        {
-//             var id = document.location.href.split('?').pop();
-//            var url = "https://spoonacular-recipe-food-nutrition-v1.p.mashape.com/recipes/"+id+"/information?includeNutrition=false/limitLicense=true";
-//            $.ajax(
-//            {
-//                type: "GET",
-//                dataType: 'json',
-//                cache: false,
-//                url: url,
-//                headers: 
-//                {
-//                    "X-Mashape-Key": "KPcwDkFQicmshdW99jxJxJaXyBZ1p1VgGiGjsnKS43zN1TMUJm"
-//                },
-//                success: function(data)
-//                {
-//                    console.log(data);
-//                    var title = data['title'];
-//                            
-//                    var length = data['readyInMinutes'];
-//                            
-//                    var imageURL = data['image'];
-//                                
-//                    var steps=[];
-//                    var step = data['analyzedInstructions'][0]['steps'];
-//                    for(var x in step)
-//                    {
-//                        steps.push(step[x]['step']);
-//                    }   
-//                                
-//                    var ingredients = [];
-//                    var ingredient = data['extendedIngredients'];
-//                    for(var x in ingredient)
-//                    {
-//                        ingredients.push(ingredient[x]['originalString']);
-//                    }
-//                    console.log(imageURL);
-//                    displayRecipeDetails(title, length, imageURL, ingredients, steps);
-//                }
-//            });  
-//        }     
-	           </script>
-<!--
-        <div id="main">
-            <h1 id="header">YumTown</h1><br><br>
-            <div id="searchDish">
-                <form action="search.php" method="post">
-                    <input id="dishSearch" type="text" placeholder="Enter Dish"><br><br>
-                </form>
-            </div>
-        </div>
--->
+
         <?php
             if(isset($_POST['submit']) && $_POST['submit'] == 'login')
             {

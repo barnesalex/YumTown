@@ -1,4 +1,5 @@
-function getRecipeList() {
+function getRecipeList() 
+{
           
           var searchText= document.getElementById('search1').value;
           var searchText1= searchText.split(' ').join('+');
@@ -42,21 +43,22 @@ function getRecipeList() {
           });
       }
 
-function logInToolbar(){
+function logInToolbar()
+{
     var Container = document.getElementById("container");
     Container.innerHTML =
                     '<ul class="nav nav-pills nav-stacked"><button id="loggedInNav1" type="button" class="btn btn-default">Search Dishes</button><button id="loggedInNav2" type="button" class="btn btn-default">View Saved Dishes</button><button id="loggedInNav3" type="button" class="btn btn-default">Create New Recipe</button><button id="loggedInNav4" type="button" class="btn btn-default">Edit Profile</button><button id="loggedInNav5" type="button" class="btn btn-default" onclick="logOutButton()">Log Out</button></ul>'
-    }
+}
 
 function logOutButton()
-    {
+{
         var Container = document.getElementById("container");
         Container.innerHTML =
                     '<ul class="nav nav-pills nav-stacked"><button id="generalNav1" type="button" class="btn btn-default" onclick="originalState()">Home</button><button id="generalNav2" type="button" class="btn btn-default" onclick="logInPage()">Log In</button><button id="generalNav3" type="button" class="btn btn-default" onclick="createAccountPage()">Create Account</button></ul>'
     }
 
 function homePageDisplay()
-        {
+{
 //            logOutButton();
             var state =
             {
@@ -72,8 +74,9 @@ function homePageDisplay()
             var display = document.getElementById("display");
             display.innerHTML = output;
         }
+
 function logInPage()
-        {
+{
             var logIn =
             {
                 loginPage: true,
@@ -87,8 +90,8 @@ function logInPage()
             display.innerHTML = output;
         }
 
-        function createAccountPage()
-        {
+function createAccountPage()
+{
             var account =
             {
                 createAccount: true,
@@ -103,7 +106,7 @@ function logInPage()
         }
         
 function toolbarToggle(login) 
-        {
+{
             if(login == true)
             {
                 logInToolbar();     
@@ -115,7 +118,7 @@ function toolbarToggle(login)
         }
 
 function displayRecipeDetails(title, length, imageURL, ingredients, steps) 
-        {
+{
             var details = 
             {
                 main: true,
@@ -145,7 +148,7 @@ function displayRecipeDetails(title, length, imageURL, ingredients, steps)
         }
 
 function getRecipe() 
-        {
+{
              var id = document.location.href.split('?').pop();
             var url = "https://spoonacular-recipe-food-nutrition-v1.p.mashape.com/recipes/"+id+"/information?includeNutrition=false/limitLicense=true";
             $.ajax(
@@ -185,4 +188,3 @@ function getRecipe()
                 }
             });  
         }
-
