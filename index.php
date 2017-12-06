@@ -223,5 +223,239 @@
             #We want to close our statement and mysqli objects that we opened up to reduce the load on the server. It's not neccessary, however it is pertinent.
         }
         ?>
+        
+        
+        <!-- Display User Profile -->
+        <?php
+    //So, this time around, we're going to need to display the user's profile! Shouldn't be too hard, just need to grab the information from the database and populate a page.
+    //Start our mysqli connection, as usual.
+    include "./secure/database.php";
+    $mysqli = new mysqli($HOST, $USERNAME, $PASSWORD, $DBNAME);
+    if($mysqli->connect_errno){
+        echo "Connection failed on line 5";
+        exit();
+    }
+    //Write our query to get all of the information from user, where user is equal to the session variable we will bind using prepared statements.
+    
+    //FOR TESTING ONLY!!! Hardcoding the session variable
+    //$_SESSION['user'] = "CowboyTitanium";
+    $_SESSION['user'] = "AAAA";
+    
+    $query = "SELECT * FROM PROFILE WHERE username=?";
+    $stmt = $mysqli->stmt_init();
+    if(!$stmt->prepare($query))
+    {
+        echo "Statement was unable to be prepared.";
+        exit();
+    }
+    //Bind the user's username session variable using prepared statements.
+    if(!isset($_SESSION['user'])) {
+        echo "User session variable was not set.";
+        exit();
+    }
+    $stmt->bind_param("s", $_SESSION['user']);
+    //Execute the query
+    $stmt->execute();
+    $result = $stmt->get_result();
+    $exists = $result->num_rows;
+    if($exists == 0) {
+        echo "Result has 0 rows. Something went wrong.";
+        exit();
+    }
+    //Now that we have our result from the database, we can use it to populate our webpage with HTML corresponding to the database values.
+    while ($row = $result->fetch_assoc()) {
+        echo '<div>';
+        echo "<br>Your Profile is as follows:<br>";
+        echo "<b>Username:</b> ". $row['username'];
+        echo "<br><b>Full name:</b> ".$row['name'];
+        if(!empty($row['dob'])) {
+            echo "<br><b>Date of birth:</b> ".$row['dob'];
+        }
+        else {
+            echo "<br><b>Date of birth:</b> N/A";
+
+        }
+        if(!empty($row['gender'])) {
+            echo "<br><b>Gender:</b> ".$row['gender'];
+        }
+        else {
+            echo "<br><b>Gender:</b> N/A";
+        }
+        if(!empty($row['profession'])) {
+            echo "<br><b>Profession:</b> ".$row['profession'];
+        }
+        else {
+            echo "<br><b>Profession:</b> N/A";
+        }
+        if(!empty($row['affiliation'])) {
+            echo "<br><b>Affiliation:</b> ".$row['affiliation'];
+        }
+        else {
+            echo "<br><b>Affiliation:</b> N/A";
+        }
+        echo "</div>";
+    }
+    $stmt->close();
+    $mysqli->close();
+
+        ?>
+        
+        <!-- Edit user profile -->
+        
+        <?php
+    //Here, we're going to be editing the user's profile.
+    //I'll probably do an update on each item in the row that's set, that way we're not overwriting existing data.
+    //CANNOT CHANGE USERNAME FOR NOW! It's easier just to update the non-PK data and not worry about data that's required to be unique. I will, however, need a way to change the password. Will probably edit this later to fix that.
+    include "./secure/database.php";
+    $mysqli = new mysqli($HOST, $USERNAME, $PASSWORD, $DBNAME);
+    if($mysqli->connect_errno){
+        echo "Connection failed on line 5";
+        exit();
+    }
+    //Sanitize the user input.
+    $name = htmlspecialchars($_POST['name']);
+    $dob = htmlspecialchars($_POST['dob']);
+    $gender = htmlspecialchars($_POST['gender']);
+    $profession = htmlspecialchars($_POST['profession']);
+    $affiliation = htmlspecialchars($_POST['affiliation']);
+    $password = htmlspecialchars($_POST['pass']);
+
+    //USED ONLY FOR TESTING PURPOSES!!!!!!!!! Hardcoding the username session variable
+    $_SESSION['user'] = "AAAA";
+
+    if(!empty($name)) {
+        $query = "UPDATE PROFILE SET name=? WHERE username=?";
+        $stmt = $mysqli->stmt_init();
+        //Prepare the UPDATE statement such that the database is updated to the new full name.
+        if(!$stmt->prepare($query))
+        {
+            echo "Statement was not properly prepared.";
+            exit();
+        } 
+        $stmt->bind_param("ss", $name, $_SESSION['user']);
+        $stmt->execute();
+        if($stmt->affected_rows > 0) {
+            echo "Username successfully updated!" . "<br>";
+        }
+        else {
+            //This could either be because the user is trying to update the field with the same info, or is inputting invalid characters.
+            echo "Username not updated.". "<br>";
+        }
+        $stmt->close();
+    }
+    if(!empty($dob)) {
+        $query = "UPDATE PROFILE SET dob=? WHERE username=?";
+        $stmt = $mysqli->stmt_init();
+        //Prepare the UPDATE statement such that the database is updated to the new date of birth.
+        if(!$stmt->prepare($query))
+        {
+            echo "Statement was not properly prepared.";
+            exit();
+        } 
+        $stmt->bind_param("ss", $dob, $_SESSION['user']);
+        $stmt->execute();
+        if($stmt->affected_rows > 0) {
+            echo "Date of birth successfully updated!" . "<br>";
+        }
+        else {
+            echo "Date of birth not updated." . "<br>";
+        }
+        $stmt->close();
+    }
+    if(!empty($gender)) {
+        $query = "UPDATE PROFILE SET gender=? WHERE username=?";
+        $stmt = $mysqli->stmt_init();
+        //Prepare the UPDATE statement such that the database is updated to the new gender.
+        if(!$stmt->prepare($query))
+        {
+            echo "Statement was not properly prepared.";
+            exit();
+        } 
+        $stmt->bind_param("ss", $gender, $_SESSION['user']);
+        $stmt->execute();
+        if($stmt->affected_rows > 0) {
+            echo "Gender successfully updated!" . "<br>";
+        }
+        else {
+            echo "Gender not updated." . "<br>";
+        }
+        $stmt->close();
+    }
+    if(!empty($profession)) {
+        $query = "UPDATE PROFILE SET profession=? WHERE username=?";
+        $stmt = $mysqli->stmt_init();
+        //Prepare the UPDATE statement such that the database is updated to the new profession.
+        if(!$stmt->prepare($query))
+        {
+            echo "Statement was not properly prepared.";
+            exit();
+        } 
+        $stmt->bind_param("ss", $profession, $_SESSION['user']);
+        $stmt->execute();
+        if($stmt->affected_rows > 0) {
+            echo "Profession successfully updated!" . "<br>";
+        }
+        else {
+            echo "Profession not updated!" . "<br>";
+        }
+        $stmt->close();
+    }
+    if(!empty($affiliation)) {
+        $query = "UPDATE PROFILE SET affiliation=? WHERE username=?";
+        $stmt = $mysqli->stmt_init();
+        //Prepare the UPDATE statement such that the database is updated to the new affiliation.
+        if(!$stmt->prepare($query))
+        {
+            echo "Statement was not properly prepared.";
+            exit();
+        } 
+        $stmt->bind_param("ss", $affiliation, $_SESSION['user']);
+        $stmt->execute();
+        if($stmt->affected_rows > 0) {
+            echo "Affiliation successfully updated!" . "<br>";
+        }
+        else {
+            echo "Affiliation not updated." . "<br>";
+        }
+        $stmt->close();
+    }
+    //Updating the password will need to be formatted a bit differently so that we can ensure it is hashed.
+    if(!empty($password)) {
+        $query = "UPDATE LOGIN SET password=? WHERE username=?";
+        $stmt = $mysqli->stmt_init();
+        //Prepare the UPDATE statement such that the database is updated to the new password.
+        if(!$stmt->prepare($query))
+        {
+            echo "Statement was not properly prepared.";
+            exit();
+        }
+        //So I should probably have the user enter their old password before they change it, but I can do that in the next sprint if needed.
+        $hash = password_hash($password, PASSWORD_DEFAULT);
+        $stmt->bind_param("ss", $hash, $_SESSION['user']);
+        $stmt->execute();
+        if($stmt->affected_rows > 0) {
+            echo "Password successfully changed!" . "<br>";
+        }
+        else {
+            echo "Password not changed." . "<br>";
+        }
+        $stmt->close();
+    }
+    
+?>
+        
+        <!-- Logout user -->
+        <?php
+//The logout is a small piece of logic that unsets the session variables and returns to the home page with the user logged out.
+
+// Delete certain session
+unset($_SESSION['user']);
+unset($_SESSION['pass']);
+
+echo '<script type="text/javascript">',
+'toolbarToggle(false);',
+'</script>';
+
+?>
     </body>
 </html>
