@@ -52,7 +52,7 @@
             <img id="broccoliLeft" src="broccoli.png">
             <div id ="container" class="container">  
                 <script>
-                    logOut();
+                    logOutButton();
                 </script>
 <!--
                 <ul class="nav nav-pills nav-stacked">

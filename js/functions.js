@@ -45,7 +45,7 @@ function getRecipeList() {
 function logInToolbar(){
     var Container = document.getElementById("container");
     Container.innerHTML =
-                    '<ul class="nav nav-pills nav-stacked"><button id="loggedInNav1" type="button" class="btn btn-default">Search Dishes</button><button id="loggedInNav2" type="button" class="btn btn-default">View Saved Dishes</button><button id="loggedInNav3" type="button" class="btn btn-default">Create New Recipe</button><button id="loggedInNav4" type="button" class="btn btn-default">Edit Profile</button><button id="loggedInNav5" type="button" class="btn btn-default" onclick="logOut()">Log Out</button></ul>'
+                    '<ul class="nav nav-pills nav-stacked"><button id="loggedInNav1" type="button" class="btn btn-default">Search Dishes</button><button id="loggedInNav2" type="button" class="btn btn-default">View Saved Dishes</button><button id="loggedInNav3" type="button" class="btn btn-default">Create New Recipe</button><button id="loggedInNav4" type="button" class="btn btn-default">Edit Profile</button><button id="loggedInNav5" type="button" class="btn btn-default" onclick="logOutButton()">Log Out</button></ul>'
     }
 
 function logOutButton()
@@ -57,7 +57,7 @@ function logOutButton()
 
 function homePageDisplay()
         {
-//            logOut();
+//            logOutButton();
             var state =
             {
                 main: true,
