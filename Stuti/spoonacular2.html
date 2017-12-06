@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html>
+<head>
+<style>
+#demo{
+    color:green; font: 14px Montserrat, sans-serif;
+}
+#title{
+  font-weight: bold; color:blue; font: 16px Montserrat, sans-serif;
+}
+#recipeinstructions{
+   color:black; font: 14px Montserrat, sans-serif;
+}
+</style>
+
+
+
+</head>
+<body>
+<button onclick="getRecipe()">click here to get information about the recipe you requested</button>
+<h3 id='title'></h3>
+<p id='demo'></p>
+<p id='recipeinstructions'></p>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
+<script>
+        function getRecipe() {
+            // var apiKey = "your-api-key-here";
+            var id = 548907;
+            var url = "https://spoonacular-recipe-food-nutrition-v1.p.mashape.com/recipes/"+id+"/information?includeNutrition=false/limitLicense=true";
+            // .header("X-Mashape-Key", "KPcwDkFQicmshdW99jxJxJaXyBZ1p1VgGiGjsnKS43zN1TMUJm")
+            $.ajax({
+                    type: "GET",
+                    dataType: 'json',
+                    cache: false,
+                    url: url,
+                    headers: {
+                      "X-Mashape-Key": "KPcwDkFQicmshdW99jxJxJaXyBZ1p1VgGiGjsnKS43zN1TMUJm"
+                    },
+                    success: function(data){
+                    alert('success');
+                    console.log(data);
+                    var ingredientList = [];
+                    var obj = data['extendedIngredients'];
+                    var title = data['title'];
+                    for(var x in obj){
+                      ingredientList.push(obj[x]['originalString']);
+                      // arr.push(obj[x]['readyInMinutes']);
+                    }
+                    var instructions = data['analyzedInstructions'][0]['steps'];
+                    var instructionsarr=[];
+                    for(var x in instructions){
+                      instructionsarr.push(instructions[x]['step']);
+                      // arr.push(obj[x]['readyInMinutes']);
+                    }
+                document.getElementById('title').innerHTML = title;
+                document.getElementById('demo').innerHTML = ingredientList.join('<br>');
+                document.getElementById('recipeinstructions').innerHTML = instructionsarr.join('<br>');
+
+              }
+            });
+        }
+
+</script>
+</body>
+</html>

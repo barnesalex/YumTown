@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html>
+<head>
+<style>
+#demo{
+   font-weight: bolder; color:#191970; font: 20px Montserrat, sans-serif;
+}
+#ing{
+  font-weight: bold; color:red; font: 16px Montserrat, sans-serif;
+}
+#recipebutton{
+  font-weight: bold; color:#191970; font: 16px Montserrat, sans-serif;
+}
+</style>
+
+
+<!-- <script>
+var obj = JSON.parse(function (data));
+document.getElementById('demo').innerHTML =obj.matches;
+</script> -->
+</head>
+<body>
+<button onclick="getRecipeJson()">click here to get information about the recipe you requested</button>
+<h1 id='demo' style=""></h1>
+<p id='ing' style=""></p>
+<p id='recipebutton'>  <br> </p>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
+<script>
+        function getRecipeJson() {
+            // var apiKey = "your-api-key-here";
+            // var any_kw = "chicken";
+            var url = "http://api.yummly.com/v1/api/recipe/Lasagna-1012776?_app_id=d9b52755&_app_key=b9dcf4a08b7440d937cfc24f49a3e781"
+            $.ajax({
+                    type: "GET",
+                    dataType: 'json',
+                    cache: false,
+                    url: url,
+                    success: function (data) {
+                    // alert('success');
+                    // console.log(data);
+                    // var obj = JSON.parse(data);
+                    // document.write(JSON.stringify(data['matches'][0]))
+                    var name = JSON.stringify(data['name'])
+                    var ingredients= JSON.stringify(data['ingredientLines'])
+                    // document.write(ingredients[0])
+                    // document.write(ingredients.length)
+                    var source = JSON.stringify(data['source']['sourceRecipeUrl'])
+                    // for(var i=0;i<ingredients.length;i++){
+                    //   var ingredientList.push(ingredients[i])}
+
+                    document.getElementById('demo').innerHTML = JSON.parse(name)
+                    var parsed = JSON.parse(ingredients);
+                    var arr = [];
+                    for(var x in parsed){
+                      arr.push(parsed[x]);
+                    }
+
+                    document.getElementById('ing').innerHTML = arr.join('<br>');
+
+                    document.getElementById('recipebutton').innerHTML = JSON.parse(source)
+                    }
+                });
+
+        }
+
+</script>
+</body>
+</html>
