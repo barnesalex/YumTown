@@ -29,25 +29,25 @@
         
         <link rel="stylesheet" type="text/css" href="Main.css">
         
-        <script src="js/mustache.js"></script>
+        <script src="js/mustache.js">load("functions.js");</script>
         <script>
-            function logIn()
-            {
-                var Container = document.getElementById("container");
-                Container.innerHTML =
-                    '<ul class="nav nav-pills nav-stacked"><button id="loggedInNav1" type="button" class="btn btn-default">Search Dishes</button><button id="loggedInNav2" type="button" class="btn btn-default">View Saved Dishes</button><button id="loggedInNav3" type="button" class="btn btn-default">Create New Recipe</button><button id="loggedInNav4" type="button" class="btn btn-default">Edit Profile</button><button id="loggedInNav5" type="button" class="btn btn-default" onclick="logOut()">Log Out</button></ul>'
-            }
+//            function logInToolbar()
+//            {
+//                var Container = document.getElementById("container");
+//                Container.innerHTML =
+//                    '<ul class="nav nav-pills nav-stacked"><button id="loggedInNav1" type="button" class="btn btn-default">Search Dishes</button><button id="loggedInNav2" type="button" class="btn btn-default">View Saved Dishes</button><button id="loggedInNav3" type="button" class="btn btn-default">Create New Recipe</button><button id="loggedInNav4" type="button" class="btn btn-default">Edit Profile</button><button id="loggedInNav5" type="button" class="btn btn-default" onclick="logOut()">Log Out</button></ul>'
+//            }
             
-            function logOut()
-            {
-                var Container = document.getElementById("container");
-                Container.innerHTML =
-                    '<ul class="nav nav-pills nav-stacked"><button id="generalNav1" type="button" class="btn btn-default" onclick="originalState()">Home</button><button id="generalNav2" type="button" class="btn btn-default" onclick="logInPage()">Log In</button><button id="generalNav3" type="button" class="btn btn-default" onclick="createAccountPage()">Create Account</button></ul>'
-            }
+//            function logOutButton()
+//            {
+//                var Container = document.getElementById("container");
+//                Container.innerHTML =
+//                    '<ul class="nav nav-pills nav-stacked"><button id="generalNav1" type="button" class="btn btn-default" onclick="homePageDisplay()">Home</button><button id="generalNav2" type="button" class="btn btn-default" onclick="logInToolbarPage()">Log In</button><button id="generalNav3" type="button" class="btn btn-default" onclick="createAccountPage()">Create Account</button></ul>'
+//            }
         </script>
         <script src="js/mustache.js"></script>
     </head>
-    <body onload="originalState()">
+    <body onload="homePageDisplay()">
         <div id="mySidenav" class="sidenav"> <!--https://www.w3schools.com/howto/howto_js_sidenav.asp-->
             <img id="broccoliLeft" src="broccoli.png">
             <div id ="container" class="container">  
@@ -57,7 +57,7 @@
 <!--
                 <ul class="nav nav-pills nav-stacked">
                     <button id="generalNav1" type="button" class="btn btn-default"><a data-toggle="tab" href="#home">Home</a></button>
-                    <button id="generalNav2" type="button" class="btn btn-default" onclick="logIn()"><a data-toggle="tab" href="#LogIn">Log In</a></button>
+                    <button id="generalNav2" type="button" class="btn btn-default" onclick="logInToolbar"><a data-toggle="tab" href="#LogIn">Log In</a></button>
                     <button id="generalNav3" type="button" class="btn btn-default"><a data-toggle="tab" href="#CreateAccount">Create Account</a></button>
                 </ul>
 -->
@@ -138,136 +138,136 @@
         <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
         
         <script>
-        function originalState()
-        {
-//            logOut();
-            var state =
-            {
-                main: true,
-                login: false,
-                details: false,        
-            }
-            var template = document.getElementById("template");
-            var hash = state;
-        
-            var output = Mustache.render(template.innerHTML, hash);
-        
-            var display = document.getElementById("display");
-            display.innerHTML = output;
-        }
+//        function homePageDisplay()
+//        {
+////            logOut();
+//            var state =
+//            {
+//                main: true,
+//                login: false,
+//                details: false,        
+//            }
+//            var template = document.getElementById("template");
+//            var hash = state;
+//        
+//            var output = Mustache.render(template.innerHTML, hash);
+//        
+//            var display = document.getElementById("display");
+//            display.innerHTML = output;
+//        }
             
-        function logInPage()
-        {
-            var logIn =
-            {
-                loginPage: true,
-            }
-            var template = document.getElementById("template");
-            var hash = logIn;
-        
-            var output = Mustache.render(template.innerHTML, hash);
-        
-            var display = document.getElementById("display");
-            display.innerHTML = output;
-        }
+//        function logInPage()
+//        {
+//            var logIn =
+//            {
+//                loginPage: true,
+//            }
+//            var template = document.getElementById("template");
+//            var hash = logIn;
+//        
+//            var output = Mustache.render(template.innerHTML, hash);
+//        
+//            var display = document.getElementById("display");
+//            display.innerHTML = output;
+//        }
             
-        function createAccountPage()
-        {
-            var account =
-            {
-                createAccount: true,
-            }
-            var template = document.getElementById("template");
-            var hash = account;
-        
-            var output = Mustache.render(template.innerHTML, hash);
-        
-            var display = document.getElementById("display");
-            display.innerHTML = output;
-        }
+//        function createAccountPage()
+//        {
+//            var account =
+//            {
+//                createAccount: true,
+//            }
+//            var template = document.getElementById("template");
+//            var hash = account;
+//        
+//            var output = Mustache.render(template.innerHTML, hash);
+//        
+//            var display = document.getElementById("display");
+//            display.innerHTML = output;
+//        }
             
-        function login(login) 
-        {
-            if(login == true)
-            {
-                logIn();     
-            }
-            else
-            {
-                logOut();    
-            }
-        }
+//        function login) 
+//        {
+//            if(login == true)
+//            {
+//                logInToolbar();     
+//            }
+//            else
+//            {
+//                logOutButton();    
+//            }
+//        }
             
-        function assign(title, length, imageURL, ingredients, steps) 
-        {
-            var details = 
-            {
-                main: true,
-                login: false,
-                details: false,
-                name: title,
-                length: length,
-                image: imageURL,
-                ingredients:
-                [   
-                    
-                ],
-                steps: 
-                [
-                    
-                ],
-			 };
-             details.steps = steps;
-             details.ingredients = ingredients;  
-             var template = document.getElementById("template");
-             var hash = details;
-        
-             var output = Mustache.render(template.innerHTML, hash);
-        
-             var display = document.getElementById("display");
-             display.innerHTML = output;
-        }
-        function getRecipe() 
-        {
-             var id = document.location.href.split('?').pop();
-            var url = "https://spoonacular-recipe-food-nutrition-v1.p.mashape.com/recipes/"+id+"/information?includeNutrition=false/limitLicense=true";
-            $.ajax(
-            {
-                type: "GET",
-                dataType: 'json',
-                cache: false,
-                url: url,
-                headers: 
-                {
-                    "X-Mashape-Key": "KPcwDkFQicmshdW99jxJxJaXyBZ1p1VgGiGjsnKS43zN1TMUJm"
-                },
-                success: function(data)
-                {
-                    console.log(data);
-                    var title = data['title'];
-                            
-                    var length = data['readyInMinutes'];
-                            
-                    var imageURL = data['image'];
-                                
-                    var steps=[];
-                    var step = data['analyzedInstructions'][0]['steps'];
-                    for(var x in step)
-                    {
-                        steps.push(step[x]['step']);
-                    }   
-                                
-                    var ingredients = [];
-                    var ingredient = data['extendedIngredients'];
-                    for(var x in ingredient)
-                    {
-                        ingredients.push(ingredient[x]['originalString']);
-                    }
-                    console.log(imageURL);
-                    assign(title, length, imageURL, ingredients, steps);
-                }
-            });  
-        }     
+//        function displayRecipeDetails(title, length, imageURL, ingredients, steps) 
+//        {
+//            var details = 
+//            {
+//                main: true,
+//                login: false,
+//                details: false,
+//                name: title,
+//                length: length,
+//                image: imageURL,
+//                ingredients:
+//                [   
+//                    
+//                ],
+//                steps: 
+//                [
+//                    
+//                ],
+//			 };
+//             details.steps = steps;
+//             details.ingredients = ingredients;  
+//             var template = document.getElementById("template");
+//             var hash = details;
+//        
+//             var output = Mustache.render(template.innerHTML, hash);
+//        
+//             var display = document.getElementById("display");
+//             display.innerHTML = output;
+//        }
+//        function getRecipe() 
+//        {
+//             var id = document.location.href.split('?').pop();
+//            var url = "https://spoonacular-recipe-food-nutrition-v1.p.mashape.com/recipes/"+id+"/information?includeNutrition=false/limitLicense=true";
+//            $.ajax(
+//            {
+//                type: "GET",
+//                dataType: 'json',
+//                cache: false,
+//                url: url,
+//                headers: 
+//                {
+//                    "X-Mashape-Key": "KPcwDkFQicmshdW99jxJxJaXyBZ1p1VgGiGjsnKS43zN1TMUJm"
+//                },
+//                success: function(data)
+//                {
+//                    console.log(data);
+//                    var title = data['title'];
+//                            
+//                    var length = data['readyInMinutes'];
+//                            
+//                    var imageURL = data['image'];
+//                                
+//                    var steps=[];
+//                    var step = data['analyzedInstructions'][0]['steps'];
+//                    for(var x in step)
+//                    {
+//                        steps.push(step[x]['step']);
+//                    }   
+//                                
+//                    var ingredients = [];
+//                    var ingredient = data['extendedIngredients'];
+//                    for(var x in ingredient)
+//                    {
+//                        ingredients.push(ingredient[x]['originalString']);
+//                    }
+//                    console.log(imageURL);
+//                    displayRecipeDetails(title, length, imageURL, ingredients, steps);
+//                }
+//            });  
+//        }     
 	           </script>
 <!--
         <div id="main">
@@ -337,7 +337,7 @@
             $stmt->close();
             $mysqli->close();
             echo '<script type="text/javascript">',
-            'login(true);',
+            'toolbarToggle(true);',
             '</script>';
         }
         ?>
@@ -377,7 +377,7 @@
                 echo "<script type='text/javascript'>alert('$message');</script>";
                 $mysqli->close();
                 echo '<script type="text/javascript">',
-                'login(true);',
+                'true);',
                 '</script>';
             } else {
                 $message = "Username taken, please choose another.";
