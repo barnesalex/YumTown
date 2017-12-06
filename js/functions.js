@@ -188,3 +188,49 @@ function getRecipe()
                 }
             });  
         }
+
+function getRecipeList() 
+{
+          
+          var searchText= document.getElementById('search1').value;
+          var searchText1= searchText.split(' ').join('+');
+          var url = "https://spoonacular-recipe-food-nutrition-v1.p.mashape.com/recipes/search?&limitLicense=false&number=12&offset=0&query="+searchText1;
+          $.ajax({
+                  type: "GET",
+                  dataType: 'json',
+                  cache: false,
+                  url: url,
+                  headers: {
+                    "X-Mashape-Key": "KPcwDkFQicmshdW99jxJxJaXyBZ1p1VgGiGjsnKS43zN1TMUJm"
+                  },
+                  success: function(data){
+                      console.log(data);
+                      var arr = [];
+                      var obj = data['results'];
+                      var imageURL = [];
+                      var arr1 =[];
+                      var idarr = [];
+                      for(var x in obj){
+                        arr.push(obj[x]['title']);
+                        imageURL.push(data['baseUri'] + obj[x]['image']);
+                        arr1.push(obj[x]['readyInMinutes']);
+                        idarr.push(obj[x]['id']);
+                      }
+                      // alert(arr1);
+                      $('#demo').empty();
+                      for(i = 0; i < obj.length; i++){
+/////////////////////
+//Place link to details.php here
+//////////////////
+                        $('#demo').append("<div class='card'>"+
+                              "<div class='card-image'>"+
+                              "<img src='"+imageURL[i]+"'/></a>"+
+                              "</div>"+
+                              "<h4 class='name'>"+arr[i]+"</h4>"+
+                              "<p class='time'>"+'Ready in '+ arr1[i]+ ' minutes'+"</p>"+
+                              "</div>");
+                      }
+                  }
+          });
+      }
+
