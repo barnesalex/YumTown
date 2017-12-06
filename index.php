@@ -373,18 +373,22 @@
                 //Checks for both functions are done inside the functions.
                 inputLogin($userid, $username, $password, $mysqli);
                 //At this point, all of the data should be added into the PROFILE and LOGIN tables. We should be good to print out that the user is created now.	
-                echo "<hr>User created<br>";
+                $message = "User created!";
+                echo "<script type='text/javascript'>alert('$message');</script>";
+                $mysqli->close();
+                echo '<script type="text/javascript">',
+                'login(true);',
+                '</script>';
             } else {
-                echo "<hr>User name taken";
+                $message = "Username taken, please choose another.";
+                echo "<script type='text/javascript'>alert('$message');</script>";
+                echo '<script type="text/javascript">',
+                'createAccountPage();',
+                '</script>';
+                $mysqli->close();
             }
             #We want to close our statement and mysqli objects that we opened up to reduce the load on the server. It's not neccessary, however it is pertinent.
-            $mysqli->close();
-            
-            echo '<script type="text/javascript">',
-            'login(true);',
-            '</script>';
         }
-
         ?>
     </body>
 </html>
