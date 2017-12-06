@@ -29,7 +29,7 @@
         
         <link rel="stylesheet" type="text/css" href="Main.css">
         
-        <script src="js/mustache.js">load("functions.js");</script>
+        <script src="js/mustache.js"></script>
         <script>
 //            function logInToolbar()
 //            {
@@ -46,6 +46,7 @@
 //            }
         </script>
         <script src="js/mustache.js"></script>
+        <script src="js/functions.js"></script>
     </head>
     <body onload="homePageDisplay()">
         <div id="mySidenav" class="sidenav"> <!--https://www.w3schools.com/howto/howto_js_sidenav.asp-->
@@ -377,13 +378,13 @@
                 echo "<script type='text/javascript'>alert('$message');</script>";
                 $mysqli->close();
                 echo '<script type="text/javascript">',
-                'true);',
+                'toolbarToggle(true);',
                 '</script>';
             } else {
                 $message = "Username taken, please choose another.";
                 echo "<script type='text/javascript'>alert('$message');</script>";
                 echo '<script type="text/javascript">',
-                'createAccountPage();',
+                'toolbarToggle(false);',
                 '</script>';
                 $mysqli->close();
             }

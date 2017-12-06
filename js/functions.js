@@ -102,7 +102,7 @@ function logInPage()
             display.innerHTML = output;
         }
         
-function login) 
+function toolbarToggle(login) 
         {
             if(login == true)
             {
