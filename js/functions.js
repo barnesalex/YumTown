@@ -1,7 +1,7 @@
 function getRecipeList() 
 {
           $("#displayUserProfileDiv").empty();
-          var searchText= document.getElementById('search1').value;
+          var searchText= document.getElementById('dishSearch').value;
           var searchText1= searchText.split(' ').join('+');
           var url = "https://spoonacular-recipe-food-nutrition-v1.p.mashape.com/recipes/search?&limitLicense=false&number=12&offset=0&query="+searchText1;
           $.ajax({
@@ -209,7 +209,7 @@ function getRecipeList()
 {
                     $("#displayUserProfileDiv").empty();
 
-          var searchText= document.getElementById('search1').value;
+          var searchText= document.getElementById('dishSearch').value;
           var searchText1= searchText.split(' ').join('+');
           var url = "https://spoonacular-recipe-food-nutrition-v1.p.mashape.com/recipes/search?&limitLicense=false&number=12&offset=0&query="+searchText1;
           $.ajax({
