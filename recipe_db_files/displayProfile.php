@@ -44,7 +44,6 @@
     //Now that we have our result from the database, we can use it to populate our webpage with HTML corresponding to the database values.
     while ($row = $result->fetch_assoc()) {
         echo '<div>';
-        echo "<br>Your Profile is as follows:<br>";
         echo "<b>Username:</b> ". $row['username'];
         echo "<br><b>Full name:</b> ".$row['name'];
         if(!empty($row['dob'])) {
