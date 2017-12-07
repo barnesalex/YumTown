@@ -28,19 +28,36 @@
         <script src="js/mustache.js"></script>
         <script src="js/functions.js"></script>
     </head>
-    <body onload="homePageDisplay()">
+    <body>
         <div id="mySidenav" class="sidenav"> <!--https://www.w3schools.com/howto/howto_js_sidenav.asp-->
-            <img id="broccoliLeft" src="broccoli.png">
             <div id ="container" class="container">  
                 <script>
-                    logOutButton();
+                    //Get session variable
+                    <?php 
+                    //unset($_SESSION['user']);
+                    ?>
+                    var sessionVar = "<?php 
+                    if(isset($_SESSION['user'])) {
+                        echo $_SESSION['user'];
+                    }
+                    else {
+                        echo "NULL";
+                    }
+                    ?>";
+                    console.log(sessionVar);
+                    if(sessionVar != "NULL"){
+                        logInToolbar();
+                    }
+                    else {
+                        //homePageDisplay();
+                        logOutButton();   
+                    }                    
                 </script>
 
             </div>
         </div>
         
         <div id="mySidenavRight" class="sidenavRight"> <!--https://www.w3schools.com/css/css_align.asp-->
-            <img id="broccoliRight" src="broccoli.png">
         </div>
         
         <div id="main">
@@ -134,6 +151,10 @@
                         <h1>Your Profile is as follows:</h1>
                         <div id="hidden_form_container" style="display:none;"></div>
                     {{/viewProfile}}
+                    
+                    {{#logoutUser}}
+                        <div id="hidden_form_container_logout" style="display:none;"></div>
+                    {{/logoutUser}}
         </script>
         
         <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
@@ -153,20 +174,20 @@
                 var display = document.getElementById("display");
                 display.innerHTML = output;
                 
-                $("#editPage").submit(function(e) {
-                    e.preventDefault();
-                });
+//                $("#editPage").submit(function(e) {
+//                    e.preventDefault();
+//                });
             }
             
             function viewProfilePage()
             {
                 
-                var profile =
+                var profile2 =
                 {
                     viewProfile: true,
                 }
                 var template = document.getElementById("template");
-                var hash = profile;
+                var hash = profile2;
 
                 var output = Mustache.render(template.innerHTML, hash);
 
@@ -208,8 +229,29 @@
               document.getElementById('hidden_form_container').appendChild(theForm);
               // ...and submit it
               theForm.submit();
-                alert("Got here!");
+                //alert("Got here!");
             }
+            
+            function homePageDisplay()
+{
+             // $("#displayUserProfileDiv").empty();
+                
+//            logOutButton();
+            var state =
+            {
+                
+                main: true,
+                login: false,
+                details: false,
+            }
+            var template = document.getElementById("template");
+            var hash = state;
+        
+            var output = Mustache.render(template.innerHTML, hash);
+        
+            var display = document.getElementById("display");
+            display.innerHTML = output;
+        }
         </script>
 
         <?php
@@ -340,7 +382,7 @@
     
     //FOR TESTING ONLY!!! Hardcoding the session variable
     //$_SESSION['user'] = "CowboyTitanium";
-    $_SESSION['user'] = "AAAA";
+    //$_SESSION['user'] = "AAAA";
     
     $query = "SELECT * FROM PROFILE WHERE username=?";
     $stmt = $mysqli->stmt_init();
@@ -424,7 +466,7 @@
             $password = htmlspecialchars($_POST['pass']);
 
             //USED ONLY FOR TESTING PURPOSES!!!!!!!!! Hardcoding the username session variable
-            $_SESSION['user'] = "AAAA";
+            //$_SESSION['user'] = "AAAA";
 
             if(!empty($name)) {
                 $query = "UPDATE PROFILE SET name=? WHERE username=?";
@@ -549,8 +591,9 @@
         
         <!-- Logout user -->
         <?php
-        $var = 0;
-        if($var == 1) {
+//        $var = 0;
+//        if($var == 1) {
+        if(isset($_POST['logoutSubmit']) && $_POST['logoutSubmit'] == "logoutUser") {
 //The logout is a small piece of logic that unsets the session variables and returns to the home page with the user logged out.
 
 // Delete certain session
@@ -560,8 +603,10 @@ unset($_SESSION['pass']);
 echo '<script type="text/javascript">',
 'toolbarToggle(false);',
 '</script>';
-            
+
+echo '<script type="text/javascript">alert("Logged out user successfully!");</script>';
 }
+//}
 
 ?>
     </body>

@@ -49,17 +49,58 @@ function logInToolbar()
 
     var Container = document.getElementById("container");
     Container.innerHTML =
-                    '<ul class="nav nav-pills nav-stacked"><button id="loggedInNav1" type="button" class="btn btn-default">Search Dishes</button><button id="loggedInNav2" type="button" class="btn btn-default">View Saved Dishes</button><button id="loggedInNav3" type="button" class="btn btn-default" onclick="viewProfilePage()">View Profile</button><button id="loggedInNav4" type="button" class="btn btn-default" onclick="editProfilePage()">Edit Profile</button><button id="loggedInNav5" type="button" class="btn btn-default" onclick="logOutButton()">Log Out</button></ul>'
+                    '<ul class="nav nav-pills nav-stacked"><button id="loggedInNav1" type="button" class="btn btn-default">Search Dishes</button><button id="loggedInNav2" type="button" class="btn btn-default">View Saved Dishes</button><button id="loggedInNav3" type="button" class="btn btn-default" onclick="viewProfilePage()">View Profile</button><button id="loggedInNav4" type="button" class="btn btn-default" onclick="editProfilePage()">Edit Profile</button><button id="loggedInNav5" type="button" class="btn btn-default" onclick="logoutUser()">Log Out</button></ul>'
+}
+
+function logoutUser() {
+    //Unset PHP variables
+    var profile3 =
+                {
+                    logoutUser: true,
+                }
+                var template = document.getElementById("template");
+                var hash = profile3;
+
+                var output = Mustache.render(template.innerHTML, hash);
+
+                var display = document.getElementById("display");
+                display.innerHTML = output;
+    
+        //Call PHP function to unset the variables
+        var theForm, newInput1, newInput2;
+              // Start by creating a <form>
+              theForm = document.createElement('form');
+              theForm.action = '';
+              theForm.method = 'post';
+              // Next create the <input>s in the form and give them names and values
+              newInput1 = document.createElement('input');
+              newInput1.type = 'hidden';
+              newInput1.name = 'logoutSubmit';
+              newInput1.value = 'logoutUser';
+//              newInput2 = document.createElement('input');
+//              newInput2.type = 'hidden';
+//              newInput2.name = 'input_2';
+//              newInput2.value = 'value 2';
+              // Now put everything together...
+              theForm.appendChild(newInput1);
+              //theForm.appendChild(newInput2); 
+              // ...and it to the DOM...
+              document.getElementById('hidden_form_container_logout').appendChild(theForm);
+              // ...and submit it
+              theForm.submit();
+            logOutButton();
+    
 }
 
 function logOutButton()
 {
+    //alert("Got to the logout button!");
               $("#displayUserProfileDiv").empty();
 
         var Container = document.getElementById("container");
         Container.innerHTML =
                     '<ul class="nav nav-pills nav-stacked"><button id="generalNav1" type="button" class="btn btn-default" onclick="homePageDisplay()">Home</button><button id="generalNav2" type="button" class="btn btn-default" onclick="logInPage()">Log In</button><button id="generalNav3" type="button" class="btn btn-default" onclick="createAccountPage()">Create Account</button></ul>'
-    }
+}
 
 function homePageDisplay()
 {
