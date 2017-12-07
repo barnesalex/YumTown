@@ -112,7 +112,7 @@
                     {{#editProfile}}
                         <h1>Edit your profile:</h1>
 
-                        <form action="" method=POST>
+                        <form id="editPage" action="" method=POST>
                             Name:<br>
                             <input type=text name="name"> <br>
                             Date of Birth:<br>
@@ -152,6 +152,10 @@
 
                 var display = document.getElementById("display");
                 display.innerHTML = output;
+                
+                $("#editPage").submit(function(e) {
+                    e.preventDefault();
+                });
             }
             
             function viewProfilePage()
@@ -361,7 +365,7 @@
     }
     //Now that we have our result from the database, we can use it to populate our webpage with HTML corresponding to the database values.
     while ($row = $result->fetch_assoc()) {
-        echo '<div style="text-align: center;">';
+        echo '<div style="text-align: center;" id="displayUserProfileDiv">';
         echo "<br>Your Profile is as follows:<br>";
         echo "<b>Username:</b> ". $row['username'];
         echo "<br><b>Full name:</b> ".$row['name'];
@@ -394,6 +398,7 @@
     }
     $stmt->close();
     $mysqli->close();
+    }
 
         ?>
         
@@ -540,7 +545,6 @@
                 $stmt->close();
             }
         }
-    }
     ?>
         
         <!-- Logout user -->

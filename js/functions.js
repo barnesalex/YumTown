@@ -1,6 +1,6 @@
 function getRecipeList() 
 {
-          
+          $("#displayUserProfileDiv").empty();
           var searchText= document.getElementById('search1').value;
           var searchText1= searchText.split(' ').join('+');
           var url = "https://spoonacular-recipe-food-nutrition-v1.p.mashape.com/recipes/search?&limitLicense=false&number=12&offset=0&query="+searchText1;
@@ -42,9 +42,11 @@ function getRecipeList()
                   }
           });
       }
-
+    
 function logInToolbar()
 {
+              $("#displayUserProfileDiv").empty();
+
     var Container = document.getElementById("container");
     Container.innerHTML =
                     '<ul class="nav nav-pills nav-stacked"><button id="loggedInNav1" type="button" class="btn btn-default">Search Dishes</button><button id="loggedInNav2" type="button" class="btn btn-default">View Saved Dishes</button><button id="loggedInNav3" type="button" class="btn btn-default" onclick="viewProfilePage()">View Profile</button><button id="loggedInNav4" type="button" class="btn btn-default" onclick="editProfilePage()">Edit Profile</button><button id="loggedInNav5" type="button" class="btn btn-default" onclick="logOutButton()">Log Out</button></ul>'
@@ -52,13 +54,17 @@ function logInToolbar()
 
 function logOutButton()
 {
+              $("#displayUserProfileDiv").empty();
+
         var Container = document.getElementById("container");
         Container.innerHTML =
-                    '<ul class="nav nav-pills nav-stacked"><button id="generalNav1" type="button" class="btn btn-default" onclick="originalState()">Home</button><button id="generalNav2" type="button" class="btn btn-default" onclick="logInPage()">Log In</button><button id="generalNav3" type="button" class="btn btn-default" onclick="createAccountPage()">Create Account</button></ul>'
+                    '<ul class="nav nav-pills nav-stacked"><button id="generalNav1" type="button" class="btn btn-default" onclick="homePageDisplay()">Home</button><button id="generalNav2" type="button" class="btn btn-default" onclick="logInPage()">Log In</button><button id="generalNav3" type="button" class="btn btn-default" onclick="createAccountPage()">Create Account</button></ul>'
     }
 
 function homePageDisplay()
 {
+              $("#displayUserProfileDiv").empty();
+
 //            logOutButton();
             var state =
             {
@@ -77,6 +83,8 @@ function homePageDisplay()
 
 function logInPage()
 {
+              $("#displayUserProfileDiv").empty();
+
             var logIn =
             {
                 loginPage: true,
@@ -92,6 +100,8 @@ function logInPage()
 
 function createAccountPage()
 {
+              $("#displayUserProfileDiv").empty();
+
             var account =
             {
                 createAccount: true,
@@ -107,6 +117,8 @@ function createAccountPage()
         
 function toolbarToggle(login) 
 {
+              $("#displayUserProfileDiv").empty();
+
             if(login == true)
             {
                 logInToolbar();     
@@ -119,6 +131,8 @@ function toolbarToggle(login)
 
 function displayRecipeDetails(title, length, imageURL, ingredients, steps) 
 {
+              $("#displayUserProfileDiv").empty();
+
             var details = 
             {
                 main: true,
@@ -149,6 +163,8 @@ function displayRecipeDetails(title, length, imageURL, ingredients, steps)
 
 function getRecipe() 
 {
+              $("#displayUserProfileDiv").empty();
+
              var id = document.location.href.split('?').pop();
             var url = "https://spoonacular-recipe-food-nutrition-v1.p.mashape.com/recipes/"+id+"/information?includeNutrition=false/limitLicense=true";
             $.ajax(
@@ -191,7 +207,8 @@ function getRecipe()
 
 function getRecipeList() 
 {
-          
+                    $("#displayUserProfileDiv").empty();
+
           var searchText= document.getElementById('search1').value;
           var searchText1= searchText.split(' ').join('+');
           var url = "https://spoonacular-recipe-food-nutrition-v1.p.mashape.com/recipes/search?&limitLicense=false&number=12&offset=0&query="+searchText1;
