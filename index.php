@@ -20,7 +20,6 @@
             integrity="sha256-hwg4gsxgFZhOsEEamdOYGBf13FyQuiTwlAQgxVSNgt4="
             crossorigin="anonymous"></script>
         <link rel="stylesheet" type="text/css" href="Main.css">
-        <link rel="stylesheet" href="assets/css/styles.css" type="text/css" />
         <!-- Bootstrap core CSS -->
         <link href="startbootstrap-simple-sidebar-gh-pages/startbootstrap-simple-sidebar-gh-pages/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
         <!-- Bootstrap core JavaScript -->
@@ -47,6 +46,7 @@
                     ?>";
                     console.log(sessionVar);
                     if(sessionVar != "NULL"){
+                        //alert("Got to the emptying of the display!");
                         logInToolbar();
                     }
                     else {
@@ -68,9 +68,9 @@
         <script id="template" type="x-tmpl-mustache">
                     {{#main}}
                         <div id="searchDish">
-                            <input id="dishSearch" type="text" placeholder="Enter a recipe name or ingredient!"><br>
-                            <button style='color: darkred' onclick='getRecipeList()' id='submit'>Search<br>
-                            <div id="demo" class="content float-left"></div>
+                        <form action="search.php" method="post">
+                            <input id="dishSearch" type="text" placeholder="Enter Dish"><br><br>
+                        </form>
                         </div>
                     {{/main}}
                     
@@ -163,6 +163,8 @@
         <script>
             function editProfilePage()
             {
+                              $("#displayUserProfileDiv").empty();
+
                 var profile =
                 {
                     editProfile: true,
@@ -182,6 +184,8 @@
             
             function viewProfilePage()
             {
+                              $("#displayUserProfileDiv").empty();
+
                 
                 var profile2 =
                 {
@@ -255,6 +259,8 @@
         }
         </script>
 
+        <!-- PHP Login code -->
+        
         <?php
             if(isset($_POST['submit']) && $_POST['submit'] == 'login')
             {
@@ -306,9 +312,12 @@
                 #Assign password to session variable.
                 $_SESSION['pass'] = $password;
                 //Redirect to the profile.php page after being logged in.
+//                echo '<script type="text/javascript">',
+//                'logInPage();',
+//                '</script>';
                 echo '<script type="text/javascript">',
-                'logInPage();',
-                '</script>';
+            'toolbarToggle(true);',
+            '</script>';
             }
             $stmt->close();
             $mysqli->close();
