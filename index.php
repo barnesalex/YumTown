@@ -20,6 +20,7 @@
             integrity="sha256-hwg4gsxgFZhOsEEamdOYGBf13FyQuiTwlAQgxVSNgt4="
             crossorigin="anonymous"></script>
         <link rel="stylesheet" type="text/css" href="Main.css">
+        <link rel="stylesheet" href="assets/css/styles.css" type="text/css" />
         <!-- Bootstrap core CSS -->
         <link href="startbootstrap-simple-sidebar-gh-pages/startbootstrap-simple-sidebar-gh-pages/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
         <!-- Bootstrap core JavaScript -->
@@ -67,9 +68,9 @@
         <script id="template" type="x-tmpl-mustache">
                     {{#main}}
                         <div id="searchDish">
-                        <form action="search.php" method="post">
-                            <input id="dishSearch" type="text" placeholder="Enter Dish"><br><br>
-                        </form>
+                            <input id="dishSearch" type="text" placeholder="Enter a recipe name or ingredient!"><br>
+                            <button style='color: darkred' onclick='getRecipeList()' id='submit'>Search<br>
+                            <div id="demo" class="content float-left"></div>
                         </div>
                     {{/main}}
                     
