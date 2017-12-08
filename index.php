@@ -9,9 +9,10 @@
 <html lang="en">
     <head>
         <meta charset="utf-8">
-        <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-        <meta name="description" content="">
-        <meta name="author" content="">
+<!--        <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">-->
+        <meta name="viewport" content="initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0, user-scalable=no, width=device-width" />
+        <meta name="description" content="SE Project">
+        <meta name="author" content="Alexander" >
         
         <title>YumTown</title>
         
@@ -20,11 +21,12 @@
             integrity="sha256-hwg4gsxgFZhOsEEamdOYGBf13FyQuiTwlAQgxVSNgt4="
             crossorigin="anonymous"></script>
         <link rel="stylesheet" type="text/css" href="Main.css">
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
         <!-- Bootstrap core CSS -->
-        <link href="startbootstrap-simple-sidebar-gh-pages/startbootstrap-simple-sidebar-gh-pages/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+<!--        <link href="startbootstrap-simple-sidebar-gh-pages/startbootstrap-simple-sidebar-gh-pages/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">-->
         <!-- Bootstrap core JavaScript -->
-        <script src="startbootstrap-simple-sidebar-gh-pages/startbootstrap-simple-sidebar-gh-pages/vendor/jquery/jquery.min.js"></script>
-        <script src="startbootstrap-simple-sidebar-gh-pages/startbootstrap-simple-sidebar-gh-pages/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+<!--        <script src="startbootstrap-simple-sidebar-gh-pages/startbootstrap-simple-sidebar-gh-pages/vendor/jquery/jquery.min.js"></script>-->
+<!--        <script src="startbootstrap-simple-sidebar-gh-pages/startbootstrap-simple-sidebar-gh-pages/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>-->
         <script src="js/mustache.js"></script>
         <script src="js/functions.js"></script>
     </head>
@@ -68,9 +70,10 @@
         <script id="template" type="x-tmpl-mustache">
                     {{#main}}
                         <div id="searchDish">
-                        <form action="search.php" method="post">
-                            <input id="dishSearch" type="text" placeholder="Enter Dish"><br><br>
-                        </form>
+                            <input id="dishSearch" type="text" placeholder="Enter Dish">
+                            <button style='color: darkred' onclick='getRecipeList()'id='submit'>Search</button>
+                            <br><br>
+                            <div id='recipeCardContainer' class="content float-left"></div>
                         </div>
                     {{/main}}
                     
@@ -158,107 +161,6 @@
                     {{/logoutUser}}
         </script>
         
-        <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
-        
-        <script>
-            function editProfilePage()
-            {
-                              $("#displayUserProfileDiv").empty();
-
-                var profile =
-                {
-                    editProfile: true,
-                }
-                var template = document.getElementById("template");
-                var hash = profile;
-
-                var output = Mustache.render(template.innerHTML, hash);
-
-                var display = document.getElementById("display");
-                display.innerHTML = output;
-                
-//                $("#editPage").submit(function(e) {
-//                    e.preventDefault();
-//                });
-            }
-            
-            function viewProfilePage()
-            {
-                              $("#displayUserProfileDiv").empty();
-
-                
-                var profile2 =
-                {
-                    viewProfile: true,
-                }
-                var template = document.getElementById("template");
-                var hash = profile2;
-
-                var output = Mustache.render(template.innerHTML, hash);
-
-                var display = document.getElementById("display");
-                display.innerHTML = output;
-                
-                //Pass info to the PHP function over POST. May not work yet.
-//                var form = document.createElement('form');
-//                form.setAttribute('method', 'post');
-//                form.setAttribute('action', '');
-//                form.setAttribute('value', 'viewProfile');
-//                form.style.display = 'hidden';
-//                document.body.appendChild(form)
-//                form.submit();
-//                var xhr = new XMLHttpRequest();
-//                xhr.open("POST", yourUrl, true);
-//                xhr.setRequestHeader('Content-Type', 'application/json');
-//                xhr.send(JSON.stringify({
-//                    value: value
-//                }));
-                var theForm, newInput1, newInput2;
-              // Start by creating a <form>
-              theForm = document.createElement('form');
-              theForm.action = '';
-              theForm.method = 'post';
-              // Next create the <input>s in the form and give them names and values
-              newInput1 = document.createElement('input');
-              newInput1.type = 'hidden';
-              newInput1.name = 'btnSubmit';
-              newInput1.value = 'viewProfile';
-//              newInput2 = document.createElement('input');
-//              newInput2.type = 'hidden';
-//              newInput2.name = 'input_2';
-//              newInput2.value = 'value 2';
-              // Now put everything together...
-              theForm.appendChild(newInput1);
-              //theForm.appendChild(newInput2); 
-              // ...and it to the DOM...
-              document.getElementById('hidden_form_container').appendChild(theForm);
-              // ...and submit it
-              theForm.submit();
-                //alert("Got here!");
-            }
-            
-            function homePageDisplay()
-{
-             // $("#displayUserProfileDiv").empty();
-                
-//            logOutButton();
-            var state =
-            {
-                
-                main: true,
-                login: false,
-                details: false,
-            }
-            var template = document.getElementById("template");
-            var hash = state;
-        
-            var output = Mustache.render(template.innerHTML, hash);
-        
-            var display = document.getElementById("display");
-            display.innerHTML = output;
-        }
-        </script>
-
         <!-- PHP Login code -->
         
         <?php
