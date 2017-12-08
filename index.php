@@ -361,9 +361,14 @@
                 $message = "User created!";
                 echo "<script type='text/javascript'>alert('$message');</script>";
                 $mysqli->close();
+                //Probably need to switch this to the login page, because the session variables aren't set yet.
+//                echo '<script type="text/javascript">',
+//                'toolbarToggle(true);',
+//                '</script>';
                 echo '<script type="text/javascript">',
-                'toolbarToggle(true);',
+                'logOutButton();',
                 '</script>';
+                
             } else {
                 $message = "Username taken, please choose another.";
                 echo "<script type='text/javascript'>alert('$message');</script>";
