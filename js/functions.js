@@ -1,5 +1,5 @@
 function getRecipeList() {
-    $("#displayUserProfileDiv").empty();
+    $("#displayUserProfileDiv").empty();    
     var searchText = document.getElementById('dishSearch').value;
     var searchText1 = searchText.split(' ').join('+');
     var url = "https://spoonacular-recipe-food-nutrition-v1.p.mashape.com/recipes/search?&limitLicense=false&number=12&offset=0&query=" + searchText1;
@@ -16,35 +16,97 @@ function getRecipeList() {
             var arr = [];
             var obj = data['results'];
             var imageURL = [];
-            var arr1 = [];
+            var prepTime = [];
             var idarr = [];
             for (var x in obj) {
                 arr.push(obj[x]['title']);
                 imageURL.push(data['baseUri'] + obj[x]['image']);
-                arr1.push(obj[x]['readyInMinutes']);
+                prepTime.push(obj[x]['readyInMinutes']);
                 idarr.push(obj[x]['id']);
             }
-            // alert(arr1);
+            // alert(prepTime);
             $('#recipeCardContainer').empty();
             for (i = 0; i < obj.length; i++) {
-                "<a href='"+"details.html?"+idarr[i]+"'>"+
-                "<div class='card-image'>"+
-                "<img src='"+imageURL[i]+"'/></a>"+
-                "</div>"+
-                "<h4 class='name'>"+arr[i]+"</h4>"+
-                "<p class='time'>"+'Ready in '+ arr1[i]+ ' minutes'+"</p>"+
-                "</div>");
-                
-                /*$('#recipeCardContainer').append("<div class='card' style='width: 20 rem;'>" +
+                $('#recipeCardContainer').append("<div class='card'>" +
                     "<a href='" + "details.html?" + idarr[i] + "'>" +
-                    "<img class='card-img-top' src='" + imageURL[i] + "'/></a>" +
-                    "<h4 class='name'>" + arr[i] + "</h4>" +
-                    "<p class='time'>" + 'Ready in ' + arr1[i] + ' minutes' + "</p>" +
+                    "<div class='card-image'>" +
+                    "<img src='" + imageURL[i] + "'/></a>" +
                     "</div>" +
-                    "</div>");*/
+                    "<h4 class='name'>" + arr[i] + "</h4>" +
+                    "<p class='time'>" + 'Ready in ' + prepTime[i] + ' minutes' + "</p>" +
+                    "</div>");
             }
         }
     });
+}
+
+function assign(title, imageURL, ingredients, steps) {
+    var details = {
+        name: title,
+        image: imageURL,
+        ingredients: [
+
+        ],
+        steps: [
+
+        ],
+
+    };
+    details.steps = steps;
+    details.ingredients = ingredients;
+    var template = document.getElementById("template");
+    var hash = details;
+
+    var output = Mustache.render(template.innerHTML, hash);
+
+    var display = document.getElementById("display");
+    display.innerHTML = output;
+}
+
+function getRecipe() {
+    var id = document.location.href.split('?').pop();
+    var url = "https://spoonacular-recipe-food-nutrition-v1.p.mashape.com/recipes/" + id + "/information?includeNutrition=false/limitLicense=true";
+    $.ajax({
+        type: "GET",
+        dataType: 'json',
+        cache: false,
+        url: url,
+        headers: {
+            "X-Mashape-Key": "KPcwDkFQicmshdW99jxJxJaXyBZ1p1VgGiGjsnKS43zN1TMUJm"
+        },
+        success: function(data) {
+            console.log(data);
+            var title = data['title'];
+
+            var imageURL = data['image'];
+            var spoonacularServings = data['servings'];
+            // console.log(spoonacularServings);
+
+            var steps = [];
+            var step = data['analyzedInstructions'][0]['steps'];
+            for (var x in step) {
+                steps.push(step[x]['step']);
+            }
+
+            var ingredients = [];
+            var ingredient = data['extendedIngredients'];
+            for (var x in ingredient) {
+                ingredients.push(ingredient[x]['originalString']);
+            }
+            // console.log(imageURL);
+            assign(title, imageURL, ingredients, steps);
+
+
+        }
+    });
+
+}
+
+function priceWidgetviewer(){
+    var ingredientList = ["1 cup chocolate chips","2 eggs","1.5 cup flour","1 cup sugar","1/2 cup butter","1 tsp baking powder"];
+    for(i = 0; i < ingredientList.length; i++){
+        $('#spoonacular-ingredients').append(ingredientList[i]+"\n");
+    }
 }
 
 function logInToolbar() {
@@ -318,3 +380,4 @@ function homePageDisplay() {
     var display = document.getElementById("display");
     display.innerHTML = output;
 }
+
