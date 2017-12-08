@@ -21,12 +21,13 @@
             integrity="sha256-hwg4gsxgFZhOsEEamdOYGBf13FyQuiTwlAQgxVSNgt4="
             crossorigin="anonymous"></script>
         <link rel="stylesheet" type="text/css" href="Main.css">
-        <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
         <!-- Bootstrap core CSS -->
 <!--        <link href="startbootstrap-simple-sidebar-gh-pages/startbootstrap-simple-sidebar-gh-pages/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">-->
         <!-- Bootstrap core JavaScript -->
 <!--        <script src="startbootstrap-simple-sidebar-gh-pages/startbootstrap-simple-sidebar-gh-pages/vendor/jquery/jquery.min.js"></script>-->
 <!--        <script src="startbootstrap-simple-sidebar-gh-pages/startbootstrap-simple-sidebar-gh-pages/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>-->
+        <script type="text/javascript" src="https://spoonacular.com/cdn/spoonacular-1.6.min.js"></script>
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
         <script src="js/mustache.js"></script>
         <script src="js/functions.js"></script>
     </head>
@@ -127,6 +128,7 @@
                             <li>{{.}}</li>
                         {{/steps}}
                         </ul><br>
+                        <div id="spoonacular-price-estimator" onload='priceWidgetviewer()'></div>
                         <pre id="spoonacular-ingredients"></pre>
                     {{/details}}
                     
