@@ -40,21 +40,20 @@ function getRecipeList() {
     });
 }
 
-function assign(title, imageURL, ingredients, steps) {
+function assign(title, imageURL, ingredients, steps, servings, time) {
     var details = {
         name: title,
         image: imageURL,
-        ingredients: [
-
-        ],
-        steps: [
-
-        ],
+        ingredients: [],
+        steps: [],
+        servings: servings,
+        time: time,
+        divTempFill: "here",
 
     };
     details.steps = steps;
     details.ingredients = ingredients;
-    var template = document.getElementById("template");
+    var template = document.getElementById("Detailstemplate");
     var hash = details;
 
     var output = Mustache.render(template.innerHTML, hash);
@@ -79,11 +78,12 @@ function getRecipe() {
             var title = data['title'];
 
             var imageURL = data['image'];
-            var spoonacularServings = data['servings'];
-            // console.log(spoonacularServings);
-
+            var servings = data['servings'];
+            var time = data['readyInMinutes'];
             var steps = [];
-            var step = data['analyzedInstructions'][0]['steps'];
+            if (data['analyzedInstructions'][0] != undefined){
+                var step = data['analyzedInstructions'][0]['steps'];
+            }
             for (var x in step) {
                 steps.push(step[x]['step']);
             }
@@ -94,17 +94,20 @@ function getRecipe() {
                 ingredients.push(ingredient[x]['originalString']);
             }
             // console.log(imageURL);
-            assign(title, imageURL, ingredients, steps);
-
+            assign(title, imageURL, ingredients, steps, servings, time);
+            priceWidgetviewer(ingredients, servings);
 
         }
     });
 
 }
 
-function priceWidgetviewer(){
-    var ingredientList = ["1 cup chocolate chips","2 eggs","1.5 cup flour","1 cup sugar","1/2 cup butter","1 tsp baking powder"];
-    for(i = 0; i < ingredientList.length; i++){
+function priceWidgetviewer(ingredients, servings){
+    var ingredientList = ingredients;
+    var spoonacularServings = servings;
+    var spoonacularPriceView  = 2;
+    $('#spoonacular-ingredients').empty();
+    for(i = 0; i < ingredientList.length; i++){        
         $('#spoonacular-ingredients').append(ingredientList[i]+"\n");
     }
 }
@@ -251,43 +254,6 @@ function displayRecipeDetails(title, length, imageURL, ingredients, steps) {
 
     var display = document.getElementById("display");
     display.innerHTML = output;
-}
-
-function getRecipe() {
-    $("#displayUserProfileDiv").empty();
-    var id = document.location.href.split('?').pop();
-    var url = "https://spoonacular-recipe-food-nutrition-v1.p.mashape.com/recipes/" + id + "/information?includeNutrition=false/limitLicense=true";
-    $.ajax({
-        type: "GET",
-        dataType: 'json',
-        cache: false,
-        url: url,
-        headers: {
-            "X-Mashape-Key": "KPcwDkFQicmshdW99jxJxJaXyBZ1p1VgGiGjsnKS43zN1TMUJm"
-        },
-        success: function(data) {
-            console.log(data);
-            var title = data['title'];
-
-            var length = data['readyInMinutes'];
-
-            var imageURL = data['image'];
-
-            var steps = [];
-            var step = data['analyzedInstructions'][0]['steps'];
-            for (var x in step) {
-                steps.push(step[x]['step']);
-            }
-
-            var ingredients = [];
-            var ingredient = data['extendedIngredients'];
-            for (var x in ingredient) {
-                ingredients.push(ingredient[x]['originalString']);
-            }
-            console.log(imageURL);
-            displayRecipeDetails(title, length, imageURL, ingredients, steps);
-        }
-    });
 }
 
 function editProfilePage() {
