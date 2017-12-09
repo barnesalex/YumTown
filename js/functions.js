@@ -1,4 +1,4 @@
-function getRecipeList() {
+    function getRecipeList() {
     $("#displayUserProfileDiv").empty();    
     var searchText = document.getElementById('dishSearch').value;
     var searchText1 = searchText.split(' ').join('+');
@@ -40,6 +40,61 @@ function getRecipeList() {
     });
 }
 
+function loadPre() {
+    if (typeof spoonacularMeasure != "undefined") {
+        spoonacularMeasureActive = spoonacularMeasure
+    } else {
+        spoonacularMeasure = spoonacularMeasureActive
+    }
+    if (typeof spoonacularServings != "undefined") {
+        spoonacularServingsInit = spoonacularServings
+    }
+    if (typeof spoonacularView != "undefined") {
+        spoonacularViewInit = spoonacularView
+    }
+    if (spoonacularMeasure == "metric") {
+        spoonacularMeasureActive = "metric";
+        spoonacularMeasureInactive = "us"
+    } else {
+        spoonacularMeasureActive = "us";
+        spoonacularMeasureInactive = "metric"
+    }
+    if (typeof spoonacularPriceView == "undefined") {
+        spoonacularPriceView = 2
+    }
+    var b = document.getElementById("spoonacular-ingredients");
+    var c = b.innerHTML;
+    var a = "https://spoonacular.com:8443";
+    if (document.getElementById("spoonacular-ingredient-visualizer") != null) {
+        $.ajax({
+            type: "POST",
+            url: a + "/recipes/visualizeIngredients",
+            data: "servings=" + spoonacularServingsInit + "&view=" + spoonacularViewInit + "&measure=" + spoonacularMeasureActive + "&ingredientList=" + encodeURIComponent(c),
+            success: spoonacularServerResponseSIV,
+            dataType: "html"
+        })
+    }
+    if (document.getElementById("spoonacular-price-estimator") != null) {
+        $.ajax({
+            type: "POST",
+            url: a + "/recipes/visualizePriceEstimator",
+            data: "servings=" + spoonacularServingsInit + "&mode=" + spoonacularPriceView + "&ingredientList=" + encodeURIComponent(c),
+            success: spoonacularServerResponseSPE,
+            dataType: "html"
+        })
+    }
+    if (document.getElementById("spoonacular-nutrition-visualizer") != null) {
+        $.ajax({
+            type: "POST",
+            url: a + "/recipes/visualizeNutrition",
+            data: "servings=" + spoonacularServingsInit + "&mode=2&ingredientList=" + encodeURIComponent(c),
+            success: spoonacularServerResponseSNV,
+            dataType: "html"
+        })
+    }
+        }
+        
+
 function assign(title, imageURL, ingredients, steps, servings, time) {
     var details = {
         name: title,
@@ -57,9 +112,10 @@ function assign(title, imageURL, ingredients, steps, servings, time) {
     var hash = details;
 
     var output = Mustache.render(template.innerHTML, hash);
-
     var display = document.getElementById("display");
     display.innerHTML = output;
+    loadPre();
+    
 }
 
 function getRecipe() {
@@ -94,8 +150,8 @@ function getRecipe() {
                 ingredients.push(ingredient[x]['originalString']);
             }
             // console.log(imageURL);
-            assign(title, imageURL, ingredients, steps, servings, time);
             priceWidgetviewer(ingredients, servings);
+            assign(title, imageURL, ingredients, steps, servings, time);
 
         }
     });

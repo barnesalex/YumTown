@@ -66,7 +66,8 @@
 
         <div id="main">
             <h1 id="header">YumTown</h1><br><br>
-            <div id ="display" style="padding-left: 100px;"></div>
+            <div id ="display" style="padding-left: 100px;">
+            </div>
         </div>
         <script id="Detailstemplate" type="x-tmpl-mustache">
 
@@ -87,12 +88,14 @@
                             <li>{{.}}</li>
                         {{/steps}}
                         </ul>
-                        {{{#price}}}
-                            <pre id="spoonacular-ingredients"></pre>
-                            <div id="spoonacular-price-estimator">{{divTempFill}}</div>
-                        {{{/price}}}
                         <br>
 
+         
         </script>
+        <script>
+        
+        </script>
+        <pre id="spoonacular-ingredients" style="text-align: center;"></pre>
+        <div id="spoonacular-price-estimator" style="text-align: center;"></div>
     </body>
 </html>

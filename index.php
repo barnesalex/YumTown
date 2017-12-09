@@ -129,7 +129,7 @@
                             <li>{{.}}</li>
                         {{/steps}}
                         </ul><br>
-                        <div id="spoonacular-price-estimator" onload='priceWidgetviewer()'></div>
+                        <div id="spoonacular-price-estimator"></div>
                         <pre id="spoonacular-ingredients"></pre>
                     {{/details}}
                     
