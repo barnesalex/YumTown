@@ -1,6 +1,6 @@
 <?php
 	$HOST = 'localhost';
-	$USERNAME = 'root';
-	$PASSWORD = 'temporary';
+	$USERNAME = 'andrew';
+	$PASSWORD = 'Mizzou1';
 	$DBNAME = 'recipedb';
 ?>
