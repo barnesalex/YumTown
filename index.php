@@ -114,6 +114,7 @@
                     {{#details}}
                         <h2>Recipe Details</h2>
                         <p>Name: {{name}}</p>
+                        <p>Servings: {{servings}}</p>
                         <p>Time: {{length}} Minutes</p>
                         <img src="{{image}}"></img>
                         <p>Ingredients: </p>
