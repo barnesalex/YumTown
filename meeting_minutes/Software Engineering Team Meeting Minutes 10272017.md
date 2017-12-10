@@ -1,28 +1,27 @@
 _Software Engineering Team Meeting Minutes 10/27/2017_
 
-Alex:
+_Alex:_
 
-Researched APIs, found Walmart food stuff
-Messing around with ads for both Gerbes and Aldi, can get a big JavaScript object that has prices
+ - Yesterday: Researched APIs, found Walmart food stuffMessing around with ads for both Gerbes and Aldi, can get a big JavaScript object that has prices
+ - Today: Architecture diagram
+ - Impediments: Architecture diagram is not defined, unsure of how things will flow
 
-Today: Architecture diagram
-Impediments: Architecture diagram is not defined, unsure of how things will flow
+_John:_
 
-John:
+ - Yesterday: Made a rough draft of flow diagram
+ - Today: Working on UI design once flow diagram is completed
+ - Impediments: N/A
 
-Yesterday: Made a rough draft of flow diagram
-Today: Working on UI design once 
-Impediments:
+_Stuti:_
 
-Stuti:
+ - Yesterday: Use case description and use case diagram
+ - Today: Work more on researching APIs
+ - Impediments: Math homework
 
-Yesterday: Use case description and use case diagram
-Today: Work more on researching APIs
-Impediment: Math homework
-
-Andrew: 
-
-Yesterday: 
+_Andrew:_
+ - Yesterday: 
+ - Today:
+ - Impediments: N/A
 
 How to store tags in the database
 - Tags will be classified as could have
