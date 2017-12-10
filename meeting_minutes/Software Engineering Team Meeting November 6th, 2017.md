@@ -5,7 +5,7 @@ _John:_
 - Today: Will be figured out in the Sprint Planning Meeting
 - Impediments: Need to figure out git
 
-_Stuti: _
+_Stuti:_
 - Yesterday: Worked with Yummly a bit
 - Today: Just got an email for Spoonacular and we get access
 - Impediments: Deciding what we’re doing
@@ -15,7 +15,7 @@ _Alex:_
 - Today: Did a little more securing on the Apache configurations
 - Impediments: No impediments. WILL BE GONE SATURDAY!!!!!!!!!!!!!!!!!!
 
-_Andrew: _
+_Andrew:_
 - Yesterday: Testing with DB, 
 - Today: Sprint planning and PHP login, if applicable
 - Impediments: No impediments 
