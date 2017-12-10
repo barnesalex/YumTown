@@ -96,6 +96,10 @@ function loadPre() {
         
 
 function assign(title, imageURL, ingredients, steps, servings, time) {
+    //Getting rid of the URL parameters so that next time we search, they're replaced.
+    var old_url = window.location.href;
+    var new_url = old_url.substring(0, old_url.indexOf('?'));
+    window.location.href = new_url;
     var details = {
         name: title,
         image: imageURL,
@@ -223,7 +227,6 @@ function logoutUser() {
 function searchPage() {
     $("#displayUserProfileDiv").empty();
     $("#spoonacular-price-estimator").css('visibility', 'hidden');
-
     
     var state = {
         main: true,
@@ -371,7 +374,10 @@ function editProfilePage() {
 function viewProfilePage() {
     $("#displayUserProfileDiv").empty();
     $("#spoonacular-price-estimator").css('visibility', 'hidden');
-
+    //Getting rid of the URL parameters so that next time we search, they're replaced.
+    var old_url = window.location.href;
+    var new_url = old_url.substring(0, old_url.indexOf('?'));
+    window.location.href = new_url;
 
     var profile2 = {
         viewProfile: true,
@@ -423,7 +429,6 @@ function viewProfilePage() {
 }
 
 function homePageDisplay() {
-    
     // $("#displayUserProfileDiv").empty();
     $("#spoonacular-price-estimator").css('visibility', 'hidden');
 
