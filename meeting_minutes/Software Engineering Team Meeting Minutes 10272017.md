@@ -19,7 +19,7 @@ _Stuti:_
  - Impediments: Math homework
 
 _Andrew:_
- - Yesterday: Research into which database system would be the best, started ERD
+ - Yesterday: Started MongoDB research and started ERD
  - Today: Continuing ERD diagram creation and researching MongoDB
  - Impediments: N/A
 
