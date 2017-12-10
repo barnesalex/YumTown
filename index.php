@@ -28,8 +28,9 @@
         <script src="js/mustache.js"></script>
         <script src="js/functions.js"></script>
     </head>
-    <body onload="loadPre()">        
-        <div class="sidenav"> <!--https://www.w3schools.com/howto/howto_js_sidenav.asp-->
+    <body onload="loadPre()" class="container-fluid">        
+        <div class="row">  
+        <div class="sidenav col-2"> <!--https://www.w3schools.com/howto/howto_js_sidenav.asp-->
             <div id ="buttonContainer" onload="searchPage()">  
                 <script>
                     //Get session variable
@@ -57,14 +58,14 @@
             </div>
         </div>
         
-        <div id="main" class="container">
+        <div id="main" class="col-10">
             <h1 id="header">YumTown</h1><br><br>
-            <div id ="display" style="padding-left: 100px;"></div>  
+            <div id ="display"></div>  
         </div>
         
         <script id="template" type="x-tmpl-mustache">
                     {{#main}}
-                        <div id="searchDish" class="container-fluid">
+                        <div id="searchDish">
                             <input id="dishSearch" type="text" placeholder="Enter Dish">
                             <button class='btn-default' onclick='getRecipeList()'id='submit'>Search</button>
                             <br><br>
@@ -86,28 +87,31 @@
                     {{/loginPage}}
                     
                     {{#createAccount}}
-                        <form action="" method=POST>
-                            Username:*<br>
-                            <input type=text name="username" required="required"> <br>
-                            Name:*<br>
-                            <input type=text name="name" required="required"> <br>
-                            Date of Birth:<br>
-                            <input type=date name="dob"><br>
-                            Gender:<br>
-                            <input type=text name="gender"><br>
-                            Profession:<br>
-                            <input type=text name="profession"><br>
-                            Affiliation:<br>
-                            <input type=text name="affiliation"><br>
-                            Pass:*<br>
-                            <input type="password" name="pass" required="required">
-                            <br><br>
-                            <input type="submit" name="submit" value="register">
-    
-                        </form>
+                        <div class='col'>
+                            <form action="" method=POST>
+                                Username:*<br>
+                                <input type=text name="username" required="required"> <br>
+                                Name:*<br>
+                                <input type=text name="name" required="required"> <br>
+                                Date of Birth:<br>
+                                <input type=date name="dob"><br>
+                                Gender:<br>
+                                <input type=text name="gender"><br>
+                                Profession:<br>
+                                <input type=text name="profession"><br>
+                                Affiliation:<br>
+                                <input type=text name="affiliation"><br>
+                                Pass:*<br>
+                                <input type="password" name="pass" required="required">
+                                <br><br>
+                                <input type="submit" name="submit" value="register">
+        
+                            </form>
+                       </div>
                     {{/createAccount}}
                     
                     {{#details}}
+                        <div class="row">                        
                         <h2>Recipe Details</h2>
                         <p>Name: {{name}}</p>
                         <p>Servings: {{servings}}</p>
@@ -127,6 +131,7 @@
                         </ul><br>
                         <div id="spoonacular-price-estimator"></div>
                         <pre id="spoonacular-ingredients"></pre>
+                        </div>
                     {{/details}}
                     
                     {{#editProfile}}
@@ -237,8 +242,8 @@
 
                 ?>
         
-        <pre id="spoonacular-ingredients" style="text-align: center; visibility: hidden;"></pre>
-        <div id="spoonacular-price-estimator" style="text-align: center; visibility: hidden;"></div>
+        <pre id="spoonacular-ingredients" style="display: none;"></pre>
+        <div id="spoonacular-price-estimator" class="container-fluid" style="display: none;"></div>
         
         <script id="Detailstemplate" type="x-tmpl-mustache">
 
@@ -557,5 +562,6 @@ echo '<script type="text/javascript">alert("Logged out user successfully!");</sc
 //}
 
 ?>
+    </div>
     </body>
 </html>

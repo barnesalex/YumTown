@@ -156,7 +156,7 @@ function getRecipe() {
             // console.log(imageURL);
             priceWidgetviewer(ingredients, servings);
             assign(title, imageURL, ingredients, steps, servings, time);
-            $("#spoonacular-price-estimator").css('visibility', 'visible');
+            $("#spoonacular-price-estimator").css('display', 'block');
         }
     });
 
@@ -174,7 +174,7 @@ function priceWidgetviewer(ingredients, servings){
 
 function logInToolbar() {
     $("#displayUserProfileDiv").empty();
-    $("#spoonacular-price-estimator").css('visibility', 'hidden');
+    $("#spoonacular-price-estimator").css('display', 'none');
 
     var Container = document.getElementById("buttonContainer");
     Container.innerHTML =
@@ -183,7 +183,7 @@ function logInToolbar() {
 }
 
 function logoutUser() {
-    $("#spoonacular-price-estimator").css('visibility', 'hidden');
+    $("#spoonacular-price-estimator").css('display', 'none');
 
     //Unset PHP variables
     var profile3 = {
@@ -226,7 +226,7 @@ function logoutUser() {
 //Allows search to be clicked when the user is logged in.
 function searchPage() {
     $("#displayUserProfileDiv").empty();
-    $("#spoonacular-price-estimator").css('visibility', 'hidden');
+    $("#spoonacular-price-estimator").css('display', 'none');
     
     var state = {
         main: true,
@@ -243,7 +243,7 @@ function searchPage() {
 function logOutButton() {
     //alert("Got to the logout button!");
     $("#displayUserProfileDiv").empty();
-    $("#spoonacular-price-estimator").css('visibility', 'hidden');
+    $("#spoonacular-price-estimator").css('display', 'none');
     var Container = document.getElementById("buttonContainer");
     Container.innerHTML =
         '<ul class="nav nav-pills nav-stacked"><button id="generalNav1" type="button" class="btn btn-default" onclick="homePageDisplay()">Home</button><button id="generalNav2" type="button" class="btn btn-default" onclick="logInPage()">Log In</button><button id="generalNav3" type="button" class="btn btn-default" onclick="createAccountPage()">Create Account</button></ul>';
@@ -254,7 +254,7 @@ function logOutButton() {
 
 function homePageDisplay() {
     $("#displayUserProfileDiv").empty();
-    $("#spoonacular-price-estimator").css('visibility', 'hidden');
+    $("#spoonacular-price-estimator").css('display', 'none');
 
     
     //            logOutButton();
@@ -274,7 +274,7 @@ function homePageDisplay() {
 
 function logInPage() {
     $("#displayUserProfileDiv").empty();
-    $("#spoonacular-price-estimator").css('visibility', 'hidden');
+    $("#spoonacular-price-estimator").css('display', 'none');
 
     
     var logIn = {
@@ -291,7 +291,7 @@ function logInPage() {
 
 function createAccountPage() {
     $("#displayUserProfileDiv").empty();
-    $("#spoonacular-price-estimator").css('visibility', 'hidden');
+    $("#spoonacular-price-estimator").css('display', 'none');
 
     
     var account = {
@@ -308,7 +308,7 @@ function createAccountPage() {
 
 function toolbarToggle(login) {
     $("#displayUserProfileDiv").empty();
-    $("#spoonacular-price-estimator").css('visibility', 'hidden');
+    $("#spoonacular-price-estimator").css('display', 'none');
 
     
     if (login == true) {
@@ -322,7 +322,7 @@ function toolbarToggle(login) {
 
 function displayRecipeDetails(title, length, imageURL, ingredients, steps) {
     $("#displayUserProfileDiv").empty();
-    $("#spoonacular-price-estimator").css('visibility', 'hidden');
+    $("#spoonacular-price-estimator").css('display', 'none');
 
     
     var details = {
@@ -352,7 +352,7 @@ function displayRecipeDetails(title, length, imageURL, ingredients, steps) {
 
 function editProfilePage() {
     $("#displayUserProfileDiv").empty();
-    $("#spoonacular-price-estimator").css('visibility', 'hidden');
+    $("#spoonacular-price-estimator").css('display', 'none');
 
     
     var profile = {
@@ -373,7 +373,7 @@ function editProfilePage() {
 
 function viewProfilePage() {
     $("#displayUserProfileDiv").empty();
-    $("#spoonacular-price-estimator").css('visibility', 'hidden');
+    $("#spoonacular-price-estimator").css('display', 'none');
     //Getting rid of the URL parameters so that next time we search, they're replaced.
     var old_url = window.location.href;
     var new_url = old_url.substring(0, old_url.indexOf('?'));
@@ -430,7 +430,7 @@ function viewProfilePage() {
 
 function homePageDisplay() {
     // $("#displayUserProfileDiv").empty();
-    $("#spoonacular-price-estimator").css('visibility', 'hidden');
+    $("#spoonacular-price-estimator").css('display', 'none');
 
     //            logOutButton();
     

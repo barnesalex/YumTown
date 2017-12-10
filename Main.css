@@ -2,33 +2,25 @@
 .sidenav
 {
   height: 100%;
-  width: 150px;
+/*  width: 150px;*/
   position: fixed;
-/*  z-index: 1;*/
+  z-index: 1;
   top: 0;
   left: 0;
   background-color: midnightblue;
   overflow-x: hidden;
-/*  padding-top: 2em;*/
-  max-width:15%;
-  max-height:100%;
+  padding-top: 2em;
+  max-width:20%;
+  min-height:100%;
+  overflow: hidden;
+  margin-bottom: -9999px;
+  padding-bottom: 9999px;
+  
 }
 
-/*.topnav
-{
-    background-image: url('yumtown2.jpg');
-    overflow: hidden;
-    height: 100px;
-    color:midnightblue;
-    /*font-size: 14px;*/
-    font-family: Montserrat;
-}*/
 /* Page content */
 #main
 {
-  padding-left: 150px; /* Same as the width of the sidenav */
-  padding-right: 150px;
-  padding-top: 150px;
   color:midnightblue;
   /*font-size: 14px;*/
   font-family: Montserrat;
@@ -65,23 +57,6 @@ img
     max-height:15.33%;
 }
 
-/*#broccoliLeft
-{
-    position: fixed;
-    top: 0;
-    left: 0;
-
-    transform: rotate(45deg);
-}*/
-
-/*#broccoliRight
-{
-    position: fixed;
-    top: 0;
-    right: 0;
-
-    transform: rotate(315deg);
-}*/
 
 #spoonacular-price-estimator
 {
