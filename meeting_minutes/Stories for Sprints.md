@@ -1,4 +1,4 @@
-_Stories for Sprints_
+_Stories for Sprints: First Meeting_
 
 - Complete flow diagram
 - Complete architecture diagram
