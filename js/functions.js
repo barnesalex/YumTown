@@ -28,7 +28,7 @@
             $('#recipeCardContainer').empty();
             for (i = 0; i < obj.length; i++) {
                 $('#recipeCardContainer').append("<div class='card'>" +
-                    "<a href='" + "details.html?" + idarr[i] + "'>" +
+                    "<a href='" + "#?" + idarr[i] + "' onclick='getRecipe()'>" +
                     "<img class='card-img-top' src='" + imageURL[i] + "'/></a>" +
                     "<div class='card-body'>" +
                     "<h4 class='title'>" + arr[i] + "</h4>" +
@@ -152,7 +152,7 @@ function getRecipe() {
             // console.log(imageURL);
             priceWidgetviewer(ingredients, servings);
             assign(title, imageURL, ingredients, steps, servings, time);
-
+            $("#spoonacular-price-estimator").css('visibility', 'visible');
         }
     });
 
@@ -170,6 +170,7 @@ function priceWidgetviewer(ingredients, servings){
 
 function logInToolbar() {
     $("#displayUserProfileDiv").empty();
+    $("#spoonacular-price-estimator").css('visibility', 'hidden');
 
     var Container = document.getElementById("buttonContainer");
     Container.innerHTML =
@@ -178,6 +179,8 @@ function logInToolbar() {
 }
 
 function logoutUser() {
+    $("#spoonacular-price-estimator").css('visibility', 'hidden');
+
     //Unset PHP variables
     var profile3 = {
         logoutUser: true,
@@ -219,11 +222,12 @@ function logoutUser() {
 //Allows search to be clicked when the user is logged in.
 function searchPage() {
     $("#displayUserProfileDiv").empty();
+    $("#spoonacular-price-estimator").css('visibility', 'hidden');
 
+    
     var state = {
         main: true,
     }
-    alert("Got here!");
     var template = document.getElementById("template");
     var hash = state;
 
@@ -236,11 +240,10 @@ function searchPage() {
 function logOutButton() {
     //alert("Got to the logout button!");
     $("#displayUserProfileDiv").empty();
-
+    $("#spoonacular-price-estimator").css('visibility', 'hidden');
     var Container = document.getElementById("buttonContainer");
     Container.innerHTML =
         '<ul class="nav nav-pills nav-stacked"><button id="generalNav1" type="button" class="btn btn-default" onclick="homePageDisplay()">Home</button><button id="generalNav2" type="button" class="btn btn-default" onclick="logInPage()">Log In</button><button id="generalNav3" type="button" class="btn btn-default" onclick="createAccountPage()">Create Account</button></ul>';
-    alert("Got here!!!");
     window.onload = function() {
         searchPage();
     };
@@ -248,7 +251,9 @@ function logOutButton() {
 
 function homePageDisplay() {
     $("#displayUserProfileDiv").empty();
+    $("#spoonacular-price-estimator").css('visibility', 'hidden');
 
+    
     //            logOutButton();
     var state = {
         main: true,
@@ -266,7 +271,9 @@ function homePageDisplay() {
 
 function logInPage() {
     $("#displayUserProfileDiv").empty();
+    $("#spoonacular-price-estimator").css('visibility', 'hidden');
 
+    
     var logIn = {
         loginPage: true,
     }
@@ -281,7 +288,9 @@ function logInPage() {
 
 function createAccountPage() {
     $("#displayUserProfileDiv").empty();
+    $("#spoonacular-price-estimator").css('visibility', 'hidden');
 
+    
     var account = {
         createAccount: true,
     }
@@ -296,7 +305,9 @@ function createAccountPage() {
 
 function toolbarToggle(login) {
     $("#displayUserProfileDiv").empty();
+    $("#spoonacular-price-estimator").css('visibility', 'hidden');
 
+    
     if (login == true) {
         //alert("Got inside toolbar toggle!");
         $("#display").empty();
@@ -308,7 +319,9 @@ function toolbarToggle(login) {
 
 function displayRecipeDetails(title, length, imageURL, ingredients, steps) {
     $("#displayUserProfileDiv").empty();
+    $("#spoonacular-price-estimator").css('visibility', 'hidden');
 
+    
     var details = {
         main: true,
         login: false,
@@ -336,7 +349,9 @@ function displayRecipeDetails(title, length, imageURL, ingredients, steps) {
 
 function editProfilePage() {
     $("#displayUserProfileDiv").empty();
+    $("#spoonacular-price-estimator").css('visibility', 'hidden');
 
+    
     var profile = {
         editProfile: true,
     }
@@ -355,6 +370,7 @@ function editProfilePage() {
 
 function viewProfilePage() {
     $("#displayUserProfileDiv").empty();
+    $("#spoonacular-price-estimator").css('visibility', 'hidden');
 
 
     var profile2 = {
@@ -407,9 +423,12 @@ function viewProfilePage() {
 }
 
 function homePageDisplay() {
+    
     // $("#displayUserProfileDiv").empty();
+    $("#spoonacular-price-estimator").css('visibility', 'hidden');
 
     //            logOutButton();
+    
     var state = {
 
         main: true,
