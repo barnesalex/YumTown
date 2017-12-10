@@ -3,8 +3,7 @@ _Stories for Sprints: First Meeting_
 - Complete flow diagram
 - Complete architecture diagram
 - Complete use case diagram - Stuti
-- Research API_
-_
+- Research API
 - ERD
 - Server configuration
 - MySQL/Apache installation
