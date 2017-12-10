@@ -12,7 +12,7 @@
 <!--        <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">-->
         <meta name="viewport" content="initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0, user-scalable=no, width=device-width" />
         <meta name="description" content="SE Project">
-        <meta name="author" content="Alexander" >
+        <meta name="author"  content="Stuti, John Andrew, Alexander">
         
         <title>YumTown</title>
         
@@ -21,11 +21,8 @@
             integrity="sha256-hwg4gsxgFZhOsEEamdOYGBf13FyQuiTwlAQgxVSNgt4="
             crossorigin="anonymous"></script>
         <link rel="stylesheet" type="text/css" href="Main.css">
-        <!-- Bootstrap core CSS -->
-<!--        <link href="startbootstrap-simple-sidebar-gh-pages/startbootstrap-simple-sidebar-gh-pages/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">-->
-        <!-- Bootstrap core JavaScript -->
-<!--        <script src="startbootstrap-simple-sidebar-gh-pages/startbootstrap-simple-sidebar-gh-pages/vendor/jquery/jquery.min.js"></script>-->
-<!--        <script src="startbootstrap-simple-sidebar-gh-pages/startbootstrap-simple-sidebar-gh-pages/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>-->
+        <link rel="stylesheet" type="text/css" href="css/bootstrap.css">
+        
         <script type="text/javascript" src="https://spoonacular.com/cdn/spoonacular-1.6.min.js"></script>
         <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
         <script src="js/mustache.js"></script>
@@ -74,7 +71,7 @@
                             <input id="dishSearch" type="text" placeholder="Enter Dish">
                             <button style='color: darkred' onclick='getRecipeList()'id='submit'>Search</button>
                             <br><br>
-                            <div id='recipeCardContainer' class="content float-left"></div>
+                            <div id='recipeCardContainer' class="card-columns"></div>
                         </div>
                     {{/main}}
                     

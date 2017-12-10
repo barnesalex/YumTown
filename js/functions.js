@@ -92,7 +92,7 @@ function loadPre() {
             dataType: "html"
         })
     }
-        }
+}
         
 
 function assign(title, imageURL, ingredients, steps, servings, time) {

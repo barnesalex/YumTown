@@ -7,7 +7,7 @@
   z-index: 1;
   top: 0;
   left: 0;
-  background-color: darkred;
+  background-color: midnightblue;
   overflow-x: hidden;
   padding-top: 20px;
   max-width:10%;
@@ -17,7 +17,7 @@
 .container
 {
     padding-top: 100px;
-    background-color: darkred;
+    background-color: midnightblue;
 }
 
 .sidenavRight
@@ -28,7 +28,7 @@
   z-index: 1;
   top: 0;
   right: 0;
-  background-color: darkred;
+  background-color: midnightblue;
   overflow-x: hidden;
   padding-top: 20px;
   max-width:10%;
@@ -40,7 +40,7 @@
     background-image: url('yumtown2.jpg');
     overflow: hidden;
     height: 100px;
-    color:darkred;
+    color:midnightblue;
     /*font-size: 14px;*/
     font-family: Montserrat;
 }
@@ -50,7 +50,7 @@
   padding-left: 100px; /* Same as the width of the sidenav */
   padding-right: 100px;
   padding-top: 100px;
-  color:darkred;
+  color:midnightblue;
   /*font-size: 14px;*/
   font-family: Montserrat;
 
@@ -59,7 +59,7 @@
 #header
 {
     text-align: center;
-    color:darkred;
+    color:midnightblue;
     /*font-size: 14px;*/
     font-family: Montserrat;
 }
@@ -67,7 +67,7 @@
 #dishSearch
 {
     text-align: center;
-    color:darkred;
+    color:midnightblue;
     /*font-size: 14px;*/
     font-family: Montserrat;
 }
@@ -75,7 +75,7 @@
 #searchDish
 {
     text-align: center;
-    color:darkred;
+    color:midnightblue;
     /*font-size: 14px;*/
     font-family: Montserrat;
 }
@@ -107,7 +107,13 @@ img
 .btn
 {
     width: 100%;
+    
 
+}
+
+.btn-default:hover
+{
+    background-color: goldenrod;
 }
 
 a
