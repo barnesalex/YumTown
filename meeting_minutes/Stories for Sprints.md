@@ -1,0 +1,15 @@
+_Stories for Sprints_
+
+- Complete flow diagram
+- Complete architecture diagram
+- Complete use case diagram - Stuti
+- Research API_
+_
+- ERD
+- Server configuration
+- MySQL/Apache installation
+- Create login page
+- Handling login form data
+- Create login database
+- Normalize ERD
+- Decide UI layout
