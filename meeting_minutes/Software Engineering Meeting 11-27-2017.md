@@ -1,19 +1,23 @@
 _Software Engineering Meeting 11-27-2017_
 
 _Stand-up:_
-- Stuti: 
+
+_Stuti:_ 
 - Yesterday: Created the card view for our project. Made this kickass card view with 12 recipes, shows the times and the recipe names
 - Today: We’ll see after the sprint planning meeting
 - Impediments: 1. Not working as a loop, hardcoded in 12 times. Tried to do as a loop. Other issue with pricePost.html
-- Alex: 
+
+_Alex:_ 
 - Yesterday: N/A, gone for two weeks
 - Today: We’ll see after the sprint planning meeting
 - Impediments: None
-- John: 
+
+_John:_ 
 - Yesterday: Nothing
 - Today: We’ll see after the sprint planning meeting
-- Impediments: Thanksgiving food coma (none)
-- Andrew: 
+- Impediments: N/A
+
+_Andrew:_ 
 - Yesterday: Broke PHP up into functions, created backup AWS server
 - Today: We’ll see after the sprint planning meeting
 - Impediments: No impediments
