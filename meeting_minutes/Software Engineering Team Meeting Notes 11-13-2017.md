@@ -1,6 +1,6 @@
 _Software Engineering Meeting Notes 11/13/2017_
-_
-_
+
+
 _Sprint Review:_
 - Did not complete architecture diagram yet
 
