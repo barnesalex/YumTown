@@ -1,0 +1,31 @@
+_Software_
+_
+_
+_Alex:_
+Yesterday: Worked on server more, got PHP, MySQL, Apache installed
+Today: Learning sudoers to give commands on the server, configuring some of it more
+Impediments: Not knowing how to do shudders
+
+John:
+- Yesterday: Got bootstrap working on UI
+- Today: Work on UI more today
+- Impediments: None so far
+
+Stuti:
+- Yesterday: Worked on trying to not do requests on Python, comparing with JavaScript
+- Today: Working on API with Python
+- Impediment: When we get something from the API, are we storing it in the database?
+
+Andrew:
+- Yesterday: Worked on database schema 
+- Today: Revise ERD, work on database schema
+- Impediments: None
+
+MySQL Root password:
+- root: Mizzou1
+
+Remove recipe table from the database
+
+url = ‘http://'
+
+Need to know what parts of the API will be included
