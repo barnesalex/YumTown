@@ -1,26 +1,23 @@
-_Software Engineering 12/04/2017 Meeting Notes_
+_Software Engineering 12-04-2017 Meeting Notes_
 
 _Stuti:_
 - Yesterday: Fixed warnings and also space thing for recipe search.
 - Today: Will decide in sprint planning meeting.
 - Impediments: N/A_
-_
-_
-_
+
+
 _Alex:_
 - Yesterday: Haven’t worked on anything since the last meeting due to other classes/constraints.
 - Today: Sprint planning.
 - Impediments: Time, etc._
-_
-_
-_
+
+
 _John:_
 - Yesterday: Stuff that we did at the meeting.
 - Today: Sprint planning.
 - Impediments: None._
-_
-_
-_
+
+
 _Andrew: _
 - Yesterday: Created displayProfile.php and editProfile.php, also integrated everything successfully
 - Today: Sprint planning.
