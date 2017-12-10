@@ -1,10 +1,9 @@
-_Software_
-_
-_
+_Software Engineering 11-3-2017 Meeting Minutes_
+
 _Alex:_
 Yesterday: Worked on server more, got PHP, MySQL, Apache installed
 Today: Learning sudoers to give commands on the server, configuring some of it more
-Impediments: Not knowing how to do shudders
+Impediments: Not knowing how to do sudoers
 
 John:
 - Yesterday: Got bootstrap working on UI
@@ -21,11 +20,6 @@ Andrew:
 - Today: Revise ERD, work on database schema
 - Impediments: None
 
-MySQL Root password:
-- root: Mizzou1
-
 Remove recipe table from the database
-
-url = ‘http://'
 
 Need to know what parts of the API will be included
