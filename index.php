@@ -163,10 +163,12 @@
                     {{#logoutUser}}
                         <div id="hidden_form_container_logout" style="display:none;"></div>
                     {{/logoutUser}}
+                    
+                    <!-- Display User Profile (Needs to be above the spoonacular ingredients and price estimator divs) -->
+                
         </script>
         
-                <!-- Display User Profile (Needs to be above the spoonacular ingredients and price estimator divs) -->
-                <?php
+        <?php
             //So, this time around, we're going to need to display the user's profile! Shouldn't be too hard, just need to grab the information from the database and populate a page.
             if(isset($_POST['btnSubmit']) && $_POST['btnSubmit'] == 'viewProfile') {
             //Start our mysqli connection, as usual.
@@ -205,7 +207,7 @@
             }
             //Now that we have our result from the database, we can use it to populate our webpage with HTML corresponding to the database values.
             while ($row = $result->fetch_assoc()) {
-                echo '<div style="text-align: center;" id="displayUserProfileDiv">';
+                echo '<div style="padding-left: 50%;" id="displayUserProfileDiv">';
                 echo "<br>Your Profile is as follows:<br>";
                 echo "<b>Username:</b> ". $row['username'];
                 echo "<br><b>Full name:</b> ".$row['name'];
