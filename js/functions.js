@@ -40,8 +40,8 @@
     });
 }
 
-function loadPre() {
-    spoonacularServings = 1;
+function loadPre(servings) {
+    spoonacularServings = servings;
     if (typeof spoonacularMeasure != "undefined") {
         spoonacularMeasureActive = spoonacularMeasure
     } else {
@@ -119,7 +119,7 @@ function assign(title, imageURL, ingredients, steps, servings, time) {
     var output = Mustache.render(template.innerHTML, hash);
     var display = document.getElementById("display");
     display.innerHTML = output;
-    loadPre();
+    loadPre(details.servings);
     
 }
 
