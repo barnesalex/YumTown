@@ -4,38 +4,17 @@
   height: 100%;
   width: 150px;
   position: fixed;
-  z-index: 1;
+/*  z-index: 1;*/
   top: 0;
   left: 0;
   background-color: midnightblue;
   overflow-x: hidden;
-  padding-top: 20px;
-  max-width:10%;
+/*  padding-top: 2em;*/
+/*  max-width:10%;*/
   max-height:100%;
 }
 
-.container
-{
-    padding-top: 100px;
-    background-color: midnightblue;
-}
-
-.sidenavRight
-{
-  height: 100%;
-  width: 100px;
-  position: fixed;
-  z-index: 1;
-  top: 0;
-  right: 0;
-  background-color: midnightblue;
-  overflow-x: hidden;
-  padding-top: 20px;
-  max-width:10%;
-  max-height:100%;
-}
-
-.topnav
+/*.topnav
 {
     background-image: url('yumtown2.jpg');
     overflow: hidden;
@@ -43,13 +22,13 @@
     color:midnightblue;
     /*font-size: 14px;*/
     font-family: Montserrat;
-}
+}*/
 /* Page content */
 #main
 {
-  padding-left: 100px; /* Same as the width of the sidenav */
-  padding-right: 100px;
-  padding-top: 100px;
+  padding-left: 150px; /* Same as the width of the sidenav */
+  padding-right: 150px;
+  padding-top: 150px;
   color:midnightblue;
   /*font-size: 14px;*/
   font-family: Montserrat;
@@ -104,11 +83,18 @@ img
     transform: rotate(315deg);
 }*/
 
-.btn
-{
-    width: 100%;
-    
 
+
+.btn
+{   
+    width: 100%;
+    margin:4px;  
+
+}
+
+.btn-default
+{
+    word-wrap:  break-word;
 }
 
 .btn-default:hover
@@ -120,4 +106,27 @@ a
 {
     width: 100%;
     word-wrap: break-word;
+}
+
+/*buttonContainer*/
+#buttonContainer
+{
+    padding: 10%;
+}
+
+/*Card CSS*/
+
+#card-columns {
+  @include media-breakpoint-only(xl) {
+    column-count: 5;
+  }
+  @include media-breakpoint-only(lg) {
+    column-count: 4;
+  }
+  @include media-breakpoint-only(md) {
+    column-count: 3;
+  }
+  @include media-breakpoint-only(sm) {
+    column-count: 2;
+  }
 }

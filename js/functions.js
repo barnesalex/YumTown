@@ -29,11 +29,11 @@
             for (i = 0; i < obj.length; i++) {
                 $('#recipeCardContainer').append("<div class='card'>" +
                     "<a href='" + "details.html?" + idarr[i] + "'>" +
-                    "<div class='card-image'>" +
-                    "<img src='" + imageURL[i] + "'/></a>" +
+                    "<img class='card-img-top' src='" + imageURL[i] + "'/></a>" +
+                    "<div class='card-body'>" +
+                    "<h4 class='title'>" + arr[i] + "</h4>" +
+                    "<p class='card-text'>" + 'Ready in ' + prepTime[i] + ' minutes' + "</p>" +
                     "</div>" +
-                    "<h4 class='name'>" + arr[i] + "</h4>" +
-                    "<p class='time'>" + 'Ready in ' + prepTime[i] + ' minutes' + "</p>" +
                     "</div>");
             }
         }
@@ -171,9 +171,9 @@ function priceWidgetviewer(ingredients, servings){
 function logInToolbar() {
     $("#displayUserProfileDiv").empty();
 
-    var Container = document.getElementById("container");
+    var Container = document.getElementById("buttonContainer");
     Container.innerHTML =
-        '<ul class="nav nav-pills nav-stacked"><button id="loggedInNav1" type="button" class="btn btn-default" onclick="searchPage()">Search Dishes</button><button id="loggedInNav2" type="button" class="btn btn-default">View Saved Dishes</button><button id="loggedInNav3" type="button" class="btn btn-default" onclick="viewProfilePage()">View Profile</button><button id="loggedInNav4" type="button" class="btn btn-default" onclick="editProfilePage()">Edit Profile</button><button id="loggedInNav5" type="button" class="btn btn-default" onclick="logoutUser()">Log Out</button></ul>';
+        '<ul class="nav nav-pills nav-stacked"><button id="loggedInNav1" type="button" class="btn btn-default btn-block" onclick="searchPage()">Search Dishes</button><button id="loggedInNav2" type="button" class="btn btn-default btn-block">View Saved Dishes</button><button id="loggedInNav3" type="button" class="btn btn-default btn-block" onclick="viewProfilePage()">View Profile</button><button id="loggedInNav4" type="button" class="btn btn-default btn-block" onclick="editProfilePage()">Edit Profile</button><button id="loggedInNav5" type="button" class="btn btn-default btn-block" onclick="logoutUser()">Log Out</button></ul>';
     searchPage();
 }
 
@@ -237,7 +237,7 @@ function logOutButton() {
     //alert("Got to the logout button!");
     $("#displayUserProfileDiv").empty();
 
-    var Container = document.getElementById("container");
+    var Container = document.getElementById("buttonContainer");
     Container.innerHTML =
         '<ul class="nav nav-pills nav-stacked"><button id="generalNav1" type="button" class="btn btn-default" onclick="homePageDisplay()">Home</button><button id="generalNav2" type="button" class="btn btn-default" onclick="logInPage()">Log In</button><button id="generalNav3" type="button" class="btn btn-default" onclick="createAccountPage()">Create Account</button></ul>';
     alert("Got here!!!");

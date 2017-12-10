@@ -9,8 +9,8 @@
 <html lang="en">
     <head>
         <meta charset="utf-8">
-<!--        <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">-->
-        <meta name="viewport" content="initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0, user-scalable=no, width=device-width" />
+        <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+<!--        <meta name="viewport" content="initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0, user-scalable=no, width=device-width" />-->
         <meta name="description" content="SE Project">
         <meta name="author"  content="Stuti, John Andrew, Alexander">
         
@@ -29,8 +29,8 @@
         <script src="js/functions.js"></script>
     </head>
     <body>
-        <div id="mySidenav" class="sidenav"> <!--https://www.w3schools.com/howto/howto_js_sidenav.asp-->
-            <div id ="container" class="container" onload="searchPage()">  
+        <div class="sidenav" class="container"> <!--https://www.w3schools.com/howto/howto_js_sidenav.asp-->
+            <div id ="buttonContainer" onload="searchPage()">  
                 <script>
                     //Get session variable
                     <?php 
@@ -57,32 +57,34 @@
             </div>
         </div>
         
-        <div id="mySidenavRight" class="sidenavRight"> <!--https://www.w3schools.com/css/css_align.asp-->
-        </div>
+        <!--<div id="mySidenavRight" class="sidenavRight" class="container-fluid"> <!--https://www.w3schools.com/css/css_align.asp-->
+        </div>-->
         
-        <div id="main">
+        <div id="main" class="container">
             <h1 id="header">YumTown</h1><br><br>
             <div id ="display" style="padding-left: 100px;"></div>  
         </div>
         <script id="template" type="x-tmpl-mustache">
                     {{#main}}
-                        <div id="searchDish">
+                        <div id="searchDish" class="container-fluid">
                             <input id="dishSearch" type="text" placeholder="Enter Dish">
-                            <button style='color: darkred' onclick='getRecipeList()'id='submit'>Search</button>
+                            <button class='btn-default' onclick='getRecipeList()'id='submit'>Search</button>
                             <br><br>
                             <div id='recipeCardContainer' class="card-columns"></div>
                         </div>
                     {{/main}}
                     
                     {{#loginPage}}
-                        <form action="" method=POST>
-                            Username:<br>
-                            <input type="text" name="name" required="required"><br>
-                            Password:<br>
-                            <input type="password" name="pass" required="required">
-                            <br><br>
-                            <input type="submit" name="submit" value="login">
-                        </form>
+                        <div class="container-fluid">
+                            <form action="" method=POST>
+                                <label for='name'>Username:</label><br>
+                                <input type="text" name="name" required="required"><br>
+                                <label for='password'>Password:</label><br>
+                                <input type="password" name="pass" required="required">
+                                <br><br>
+                                <input class='btn-default' type="submit" name="submit" value="login">
+                            </form>
+                        </div>
                     {{/loginPage}}
                     
                     {{#createAccount}}
