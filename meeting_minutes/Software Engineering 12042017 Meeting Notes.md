@@ -39,7 +39,7 @@ _Sprint Planning Meeting:_
 _Meeting times:_
 - T/R: 2pm-3:15pm, class from 5-7pm, free after 9:15pm
 - W: After 3pm (John) 
-- F: 
+- F: 10:30am
 
 _Still needs to be written:_
 - Logout
