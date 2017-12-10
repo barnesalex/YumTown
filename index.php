@@ -33,7 +33,7 @@
     </head>
     <body>
         <div id="mySidenav" class="sidenav"> <!--https://www.w3schools.com/howto/howto_js_sidenav.asp-->
-            <div id ="container" class="container">  
+            <div id ="container" class="container" onload="searchPage()">  
                 <script>
                     //Get session variable
                     <?php 
@@ -49,7 +49,6 @@
                     ?>";
                     console.log(sessionVar);
                     if(sessionVar != "NULL"){
-                        //alert("Got to the emptying of the display!");
                         logInToolbar();
                     }
                     else {
@@ -505,6 +504,10 @@
                     echo "Password not changed." . "<br>";
                 }
                 $stmt->close();
+                alert("Profile updated!");
+                echo '<script type="text/javascript">',
+                'loggedInPage();',
+                '</script>';
             }
         }
     ?>

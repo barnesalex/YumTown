@@ -173,7 +173,8 @@ function logInToolbar() {
 
     var Container = document.getElementById("container");
     Container.innerHTML =
-        '<ul class="nav nav-pills nav-stacked"><button id="loggedInNav1" type="button" class="btn btn-default">Search Dishes</button><button id="loggedInNav2" type="button" class="btn btn-default">View Saved Dishes</button><button id="loggedInNav3" type="button" class="btn btn-default" onclick="viewProfilePage()">View Profile</button><button id="loggedInNav4" type="button" class="btn btn-default" onclick="editProfilePage()">Edit Profile</button><button id="loggedInNav5" type="button" class="btn btn-default" onclick="logoutUser()">Log Out</button></ul>'
+        '<ul class="nav nav-pills nav-stacked"><button id="loggedInNav1" type="button" class="btn btn-default" onclick="searchPage()">Search Dishes</button><button id="loggedInNav2" type="button" class="btn btn-default">View Saved Dishes</button><button id="loggedInNav3" type="button" class="btn btn-default" onclick="viewProfilePage()">View Profile</button><button id="loggedInNav4" type="button" class="btn btn-default" onclick="editProfilePage()">Edit Profile</button><button id="loggedInNav5" type="button" class="btn btn-default" onclick="logoutUser()">Log Out</button></ul>';
+    searchPage();
 }
 
 function logoutUser() {
@@ -215,13 +216,34 @@ function logoutUser() {
 
 }
 
+//Allows search to be clicked when the user is logged in.
+function searchPage() {
+    $("#displayUserProfileDiv").empty();
+
+    var state = {
+        main: true,
+    }
+    alert("Got here!");
+    var template = document.getElementById("template");
+    var hash = state;
+
+    var output = Mustache.render(template.innerHTML, hash);
+
+    var display = document.getElementById("display");
+    display.innerHTML = output; 
+}
+
 function logOutButton() {
     //alert("Got to the logout button!");
     $("#displayUserProfileDiv").empty();
 
     var Container = document.getElementById("container");
     Container.innerHTML =
-        '<ul class="nav nav-pills nav-stacked"><button id="generalNav1" type="button" class="btn btn-default" onclick="homePageDisplay()">Home</button><button id="generalNav2" type="button" class="btn btn-default" onclick="logInPage()">Log In</button><button id="generalNav3" type="button" class="btn btn-default" onclick="createAccountPage()">Create Account</button></ul>'
+        '<ul class="nav nav-pills nav-stacked"><button id="generalNav1" type="button" class="btn btn-default" onclick="homePageDisplay()">Home</button><button id="generalNav2" type="button" class="btn btn-default" onclick="logInPage()">Log In</button><button id="generalNav3" type="button" class="btn btn-default" onclick="createAccountPage()">Create Account</button></ul>';
+    alert("Got here!!!");
+    window.onload = function() {
+        searchPage();
+    };
 }
 
 function homePageDisplay() {
