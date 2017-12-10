@@ -29,7 +29,7 @@
         <script src="js/functions.js"></script>
     </head>
     <body onload="loadPre()">        
-        <div class="sidenav" class="container"> <!--https://www.w3schools.com/howto/howto_js_sidenav.asp-->
+        <div class="sidenav"> <!--https://www.w3schools.com/howto/howto_js_sidenav.asp-->
             <div id ="buttonContainer" onload="searchPage()">  
                 <script>
                     //Get session variable
@@ -56,9 +56,6 @@
 
             </div>
         </div>
-        
-        <!--<div id="mySidenavRight" class="sidenavRight" class="container-fluid"> <!--https://www.w3schools.com/css/css_align.asp-->
-        </div>-->
         
         <div id="main" class="container">
             <h1 id="header">YumTown</h1><br><br>

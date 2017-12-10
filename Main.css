@@ -10,7 +10,7 @@
   background-color: midnightblue;
   overflow-x: hidden;
 /*  padding-top: 2em;*/
-/*  max-width:10%;*/
+  max-width:15%;
   max-height:100%;
 }
 
@@ -83,19 +83,20 @@ img
     transform: rotate(315deg);
 }*/
 
+#spoonacular-price-estimator
+{
+    text-align: left;
 
+}
 
 .btn
 {   
     width: 100%;
-    margin:4px;  
-
-}
-
-.btn-default
-{
+    margin:3px;
     word-wrap:  break-word;
+
 }
+
 
 .btn-default:hover
 {
@@ -111,7 +112,7 @@ a
 /*buttonContainer*/
 #buttonContainer
 {
-    padding: 10%;
+    padding: 5%;
 }
 
 /*Card CSS*/
