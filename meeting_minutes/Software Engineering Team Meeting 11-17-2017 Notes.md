@@ -1,6 +1,6 @@
-_Software Engineering Meeting 11-17-2017_
-_Stand-up:_
+_Software Engineering Meeting Notes 11-17-2017_
 
+_Stand-up:_
 
 _John:_
 - Yesterday: Unable to get anything done due to class, which is understandable because OS is hard
