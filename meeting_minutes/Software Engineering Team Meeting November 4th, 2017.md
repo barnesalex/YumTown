@@ -1,6 +1,6 @@
 _Software Engineering Team Meeting November 4th, 2017_
-_
-_
+
+
 _Stuti:_
 - Yesterday: JSON parsing, created a file that gets information 
 - Today: More JSON parsing with the recipes 
@@ -16,7 +16,7 @@ _Alex:_
 - Today: API, migrating to Linode or Amazon
 - Impediments: Breaker box went out at home, Mediacom not working at home
 
-_Andrew: _
+_Andrew:_
 - Yesterday: Finished the database schema and finished the ERD revisions
 - Today: Will try to fix error in adding the database to MariaDB, and will create a test login page
 - Impediments: MariaDB throws an error when trying to add the SQL database
