@@ -31,7 +31,7 @@
         <script src="js/mustache.js"></script>
         <script src="js/functions.js"></script>
     </head>
-    <body>
+    <body onload="loadPre()">
         <div id="mySidenav" class="sidenav"> <!--https://www.w3schools.com/howto/howto_js_sidenav.asp-->
             <div id ="container" class="container" onload="searchPage()">  
                 <script>
@@ -67,6 +67,7 @@
             <h1 id="header">YumTown</h1><br><br>
             <div id ="display" style="padding-left: 100px;"></div>  
         </div>
+        
         <script id="template" type="x-tmpl-mustache">
                     {{#main}}
                         <div id="searchDish">
@@ -161,6 +162,109 @@
                     {{#logoutUser}}
                         <div id="hidden_form_container_logout" style="display:none;"></div>
                     {{/logoutUser}}
+        </script>
+        
+                <!-- Display User Profile (Needs to be above the spoonacular ingredients and price estimator divs) -->
+                <?php
+            //So, this time around, we're going to need to display the user's profile! Shouldn't be too hard, just need to grab the information from the database and populate a page.
+            if(isset($_POST['btnSubmit']) && $_POST['btnSubmit'] == 'viewProfile') {
+            //Start our mysqli connection, as usual.
+            include "./secure/database.php";
+            $mysqli = new mysqli($HOST, $USERNAME, $PASSWORD, $DBNAME);
+            if($mysqli->connect_errno){
+                echo "Connection failed on line 5";
+                exit();
+            }
+            //Write our query to get all of the information from user, where user is equal to the session variable we will bind using prepared statements.
+
+            //FOR TESTING ONLY!!! Hardcoding the session variable
+            //$_SESSION['user'] = "CowboyTitanium";
+            //$_SESSION['user'] = "AAAA";
+
+            $query = "SELECT * FROM PROFILE WHERE username=?";
+            $stmt = $mysqli->stmt_init();
+            if(!$stmt->prepare($query))
+            {
+                echo "Statement was unable to be prepared.";
+                exit();
+            }
+            //Bind the user's username session variable using prepared statements.
+            if(!isset($_SESSION['user'])) {
+                echo "User session variable was not set.";
+                exit();
+            }
+            $stmt->bind_param("s", $_SESSION['user']);
+            //Execute the query
+            $stmt->execute();
+            $result = $stmt->get_result();
+            $exists = $result->num_rows;
+            if($exists == 0) {
+                echo "Result has 0 rows. Something went wrong.";
+                exit();
+            }
+            //Now that we have our result from the database, we can use it to populate our webpage with HTML corresponding to the database values.
+            while ($row = $result->fetch_assoc()) {
+                echo '<div style="text-align: center;" id="displayUserProfileDiv">';
+                echo "<br>Your Profile is as follows:<br>";
+                echo "<b>Username:</b> ". $row['username'];
+                echo "<br><b>Full name:</b> ".$row['name'];
+                if(!empty($row['dob'])) {
+                    echo "<br><b>Date of birth:</b> ".$row['dob'];
+                }
+                else {
+                    echo "<br><b>Date of birth:</b> N/A";
+
+                }
+                if(!empty($row['gender'])) {
+                    echo "<br><b>Gender:</b> ".$row['gender'];
+                }
+                else {
+                    echo "<br><b>Gender:</b> N/A";
+                }
+                if(!empty($row['profession'])) {
+                    echo "<br><b>Profession:</b> ".$row['profession'];
+                }
+                else {
+                    echo "<br><b>Profession:</b> N/A";
+                }
+                if(!empty($row['affiliation'])) {
+                    echo "<br><b>Affiliation:</b> ".$row['affiliation'];
+                }
+                else {
+                    echo "<br><b>Affiliation:</b> N/A";
+                }
+                echo "</div>";
+            }
+            $stmt->close();
+            $mysqli->close();
+            }
+
+                ?>
+        
+        <pre id="spoonacular-ingredients" style="text-align: center; visibility: hidden;"></pre>
+        <div id="spoonacular-price-estimator" style="text-align: center; visibility: hidden;"></div>
+        
+        <script id="Detailstemplate" type="x-tmpl-mustache">
+
+                        <h2>Recipe Details</h2>
+                        <p>Name: {{name}}</p>
+                        <p>Servings: {{servings}}</p>
+                        <p>Ready in: {{time}} minutes</p>
+                        <img src="{{image}}"></img>
+                        <p>Ingredients: </p>
+                        <ul>
+                        {{#ingredients}}
+                            <li>{{.}}</li>
+                        {{/ingredients}}
+                        </ul><br>
+                        <p>Recipe Steps: </p>
+                        <ul>
+                        {{#steps}}
+                            <li>{{.}}</li>
+                        {{/steps}}
+                        </ul>
+                        <br>
+         
         </script>
         
         <!-- PHP Login code -->
@@ -286,82 +390,7 @@
         ?>
         
         
-        <!-- Display User Profile -->
-        <?php
-    //So, this time around, we're going to need to display the user's profile! Shouldn't be too hard, just need to grab the information from the database and populate a page.
-    if(isset($_POST['btnSubmit']) && $_POST['btnSubmit'] == 'viewProfile') {
-    //Start our mysqli connection, as usual.
-    include "./secure/database.php";
-    $mysqli = new mysqli($HOST, $USERNAME, $PASSWORD, $DBNAME);
-    if($mysqli->connect_errno){
-        echo "Connection failed on line 5";
-        exit();
-    }
-    //Write our query to get all of the information from user, where user is equal to the session variable we will bind using prepared statements.
-    
-    //FOR TESTING ONLY!!! Hardcoding the session variable
-    //$_SESSION['user'] = "CowboyTitanium";
-    //$_SESSION['user'] = "AAAA";
-    
-    $query = "SELECT * FROM PROFILE WHERE username=?";
-    $stmt = $mysqli->stmt_init();
-    if(!$stmt->prepare($query))
-    {
-        echo "Statement was unable to be prepared.";
-        exit();
-    }
-    //Bind the user's username session variable using prepared statements.
-    if(!isset($_SESSION['user'])) {
-        echo "User session variable was not set.";
-        exit();
-    }
-    $stmt->bind_param("s", $_SESSION['user']);
-    //Execute the query
-    $stmt->execute();
-    $result = $stmt->get_result();
-    $exists = $result->num_rows;
-    if($exists == 0) {
-        echo "Result has 0 rows. Something went wrong.";
-        exit();
-    }
-    //Now that we have our result from the database, we can use it to populate our webpage with HTML corresponding to the database values.
-    while ($row = $result->fetch_assoc()) {
-        echo '<div style="text-align: center;" id="displayUserProfileDiv">';
-        echo "<br>Your Profile is as follows:<br>";
-        echo "<b>Username:</b> ". $row['username'];
-        echo "<br><b>Full name:</b> ".$row['name'];
-        if(!empty($row['dob'])) {
-            echo "<br><b>Date of birth:</b> ".$row['dob'];
-        }
-        else {
-            echo "<br><b>Date of birth:</b> N/A";
 
-        }
-        if(!empty($row['gender'])) {
-            echo "<br><b>Gender:</b> ".$row['gender'];
-        }
-        else {
-            echo "<br><b>Gender:</b> N/A";
-        }
-        if(!empty($row['profession'])) {
-            echo "<br><b>Profession:</b> ".$row['profession'];
-        }
-        else {
-            echo "<br><b>Profession:</b> N/A";
-        }
-        if(!empty($row['affiliation'])) {
-            echo "<br><b>Affiliation:</b> ".$row['affiliation'];
-        }
-        else {
-            echo "<br><b>Affiliation:</b> N/A";
-        }
-        echo "</div>";
-    }
-    $stmt->close();
-    $mysqli->close();
-    }
-
-        ?>
         
         <!-- Edit user profile -->
         
