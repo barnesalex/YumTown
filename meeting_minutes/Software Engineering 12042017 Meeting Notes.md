@@ -3,19 +3,19 @@ _Software Engineering 12-04-2017 Meeting Notes_
 _Stuti:_
 - Yesterday: Fixed warnings and also space thing for recipe search.
 - Today: Will decide in sprint planning meeting.
-- Impediments: N/A_
+- Impediments: N/A
 
 
 _Alex:_
 - Yesterday: Haven’t worked on anything since the last meeting due to other classes/constraints.
 - Today: Sprint planning.
-- Impediments: Time, etc._
+- Impediments: Time, etc.
 
 
 _John:_
 - Yesterday: Stuff that we did at the meeting.
 - Today: Sprint planning.
-- Impediments: None._
+- Impediments: None.
 
 
 _Andrew: _
