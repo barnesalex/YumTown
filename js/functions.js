@@ -41,6 +41,7 @@
 }
 
 function loadPre() {
+    spoonacularServings = 1;
     if (typeof spoonacularMeasure != "undefined") {
         spoonacularMeasureActive = spoonacularMeasure
     } else {
