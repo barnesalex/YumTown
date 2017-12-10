@@ -1,8 +1,7 @@
 _Software Engineering Meeting Notes 11-10-2017_
 
-_Stuti:_*_
-_*
-*_ _*- Yesterday: Got access to Spoonacular and Mashables, doing similar things to Yummly but Spoonacular has more stuff in it
+_Stuti:_
+- Yesterday: Got access to Spoonacular and Mashables, doing similar things to Yummly but Spoonacular has more stuff in it
 - Today: Work on getting the pictures for the recipes
 - Impediments: Need to figure out how to use AJAX with two API queries in one program. Basically, need to figure out how to get it on 1 or 2 pages
 
