@@ -19,8 +19,8 @@ _Stuti:_
  - Impediments: Math homework
 
 _Andrew:_
- - Yesterday: 
- - Today:
+ - Yesterday: Research into which database system would be the best, started ERD
+ - Today: Continuing ERD diagram creation and researching MongoDB
  - Impediments: N/A
 
 How to store tags in the database
