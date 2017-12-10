@@ -11,6 +11,6 @@ _John:_
 - Impediments: No direct impediments, work for other classes
 
 _Andrew:_
-- Yesterday: 
-- Today: 
-- Impediments: 
+- Yesterday: Created the create profile PHP page
+- Today: Will finish updating the database schema
+- Impediments: N/A
