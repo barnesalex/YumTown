@@ -59,7 +59,9 @@
         </div>
         
         <div id="main" class="col-10">
-            <h1 id="header">YumTown</h1><br><br>
+<!--            <h1 id="header">YumTown</h1>-->
+            <img src="YumTown.svg.png">
+            <br><br>
             <div id ="display"></div>  
         </div>
         
@@ -341,7 +343,7 @@
         <?php
         if(isset($_POST['submit']) && $_POST['submit'] == 'register')
         {
-            include "./recipe_db_files/secure/database.php";
+            include "./secure/database.php";
             include "./recipe_db_files/profileFunctions.php";
             //Initiate a mysqli connection with the database
             $mysqli = new mysqli($HOST, $USERNAME, $PASSWORD, $DBNAME);
@@ -401,7 +403,7 @@
     //Here, we're going to be editing the user's profile.
     //I'll probably do an update on each item in the row that's set, that way we're not overwriting existing data.
     //CANNOT CHANGE USERNAME FOR NOW! It's easier just to update the non-PK data and not worry about data that's required to be unique. I will, however, need a way to change the password. Will probably edit this later to fix that.
-        if(isset($_POST['submit']) && $_POST['submit'] == 'viewProfile') {
+        if(isset($_POST['submit']) && $_POST['submit'] == 'editProfile') {
             include "./secure/database.php";
             $mysqli = new mysqli($HOST, $USERNAME, $PASSWORD, $DBNAME);
             if($mysqli->connect_errno){
@@ -431,7 +433,7 @@
                 $stmt->bind_param("ss", $name, $_SESSION['user']);
                 $stmt->execute();
                 if($stmt->affected_rows > 0) {
-                    echo "Username successfully updated!" . "<br>";
+                    //echo "Username successfully updated!" . "<br>";
                 }
                 else {
                     //This could either be because the user is trying to update the field with the same info, or is inputting invalid characters.
@@ -451,7 +453,7 @@
                 $stmt->bind_param("ss", $dob, $_SESSION['user']);
                 $stmt->execute();
                 if($stmt->affected_rows > 0) {
-                    echo "Date of birth successfully updated!" . "<br>";
+                    //echo "Date of birth successfully updated!" . "<br>";
                 }
                 else {
                     echo "Date of birth not updated." . "<br>";
@@ -470,7 +472,7 @@
                 $stmt->bind_param("ss", $gender, $_SESSION['user']);
                 $stmt->execute();
                 if($stmt->affected_rows > 0) {
-                    echo "Gender successfully updated!" . "<br>";
+                    //echo "Gender successfully updated!" . "<br>";
                 }
                 else {
                     echo "Gender not updated." . "<br>";
@@ -489,7 +491,7 @@
                 $stmt->bind_param("ss", $profession, $_SESSION['user']);
                 $stmt->execute();
                 if($stmt->affected_rows > 0) {
-                    echo "Profession successfully updated!" . "<br>";
+                    //echo "Profession successfully updated!" . "<br>";
                 }
                 else {
                     echo "Profession not updated!" . "<br>";
@@ -536,11 +538,11 @@
                     echo "Password not changed." . "<br>";
                 }
                 $stmt->close();
-                alert("Profile updated!");
+		}
                 echo '<script type="text/javascript">',
+                'alert("Profile updated!");',
                 'loggedInPage();',
                 '</script>';
-            }
         }
     ?>
         
