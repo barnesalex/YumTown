@@ -1,3 +1,5 @@
+![YumTown](YumTown.svg.png)
+
 # YumTown
 SoftwareDev Project
 by Andrew Krall, Alex Barnes, Stuti Chugh, John Jolley
@@ -12,3 +14,10 @@ that recipe including ingredients, instructions, and a pricebreakdown. You can c
 * One thing we weren't able to accomplish was having the user being able to save recipes and view their saved recipes. If we had more time or were to continue with this project we would have tried to accomplish finishing that feature.
 * The programming languages and technologies used for this project are javascript, PHP, HTML, jquery/ajax, mustache templates, and spoonacular API
 
+![Usecase Diagram](usecasediagram.pdf)
+
+![Usecase Discription](Use-case-description.pdf)
+
+![Architecture Diagram](architecture_diagram.pdf)
+
+![Flow Diagram](SEProjectFlowDiagram.pdf)
