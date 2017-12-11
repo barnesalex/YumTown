@@ -341,7 +341,7 @@
         <?php
         if(isset($_POST['submit']) && $_POST['submit'] == 'register')
         {
-            include "./recipe_db_files/secure/database.php";
+            include "./secure/database.php";
             include "./recipe_db_files/profileFunctions.php";
             //Initiate a mysqli connection with the database
             $mysqli = new mysqli($HOST, $USERNAME, $PASSWORD, $DBNAME);
