@@ -1,5 +1,6 @@
 # YumTown
 SoftwareDev Project
+By Andrew Krall, Alex Barnes, Stuti Chugh, John Jolley
 
 ## December 10, 2017
 ## Description
