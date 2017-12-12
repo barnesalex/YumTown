@@ -21,3 +21,7 @@ that recipe including ingredients, instructions, and a pricebreakdown. You can c
 ![Architecture Diagram](architecture_diagram.pdf)
 
 ![Flow Diagram](SEProjectFlowDiagram.pdf)
+
+![Entity Relationship Diagram](ERD_SWEngineering_Revised_Final.pdf)
+
+![Axosoft Link](https://akrall.axosoft.com/)
