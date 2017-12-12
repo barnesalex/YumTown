@@ -24,4 +24,6 @@ that recipe including ingredients, instructions, and a pricebreakdown. You can c
 
 ![Entity Relationship Diagram](ERD_SWEngineering_Revised_Final.pdf)
 
-[Axosoft Link](https://akrall.axosoft.com/)
+![Axosoft Link](https://akrall.axosoft.com/)
+
+![Project Video](https://www.youtube.com/watch?v=ShkZPDCm4Zk)
